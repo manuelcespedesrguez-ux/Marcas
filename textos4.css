@@ -18,6 +18,6 @@ p{
 	margin-bottom: 15px;
 }
 
-#izq{text-align: left;}
-#cen{text-align: center;}
-#der{text-align: right;}
+#izq{text-align: left; text-decoration: underline; text-transform: capitalize;}
+#cen{text-align: center; text-decoration: overline; text-transform: uppercase;}
+#der{text-align: right; text-decoration: line-through; text-transform: lowercase;}
