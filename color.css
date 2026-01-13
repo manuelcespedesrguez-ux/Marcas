@@ -1,0 +1,16 @@
+h2{
+	color: hotpink;
+	font-family: sans-serif;
+	border-bottom: 2px solid turquoise;
+	padding-bottom: 5px;
+	margin-top: 20px;
+	background-color: lavender;
+}
+
+p{
+	color: peru;
+	font-family: sans-serif;
+	line-height: 1.6;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
