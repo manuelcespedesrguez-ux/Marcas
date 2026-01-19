@@ -1,0 +1,20 @@
+table, tr, td {
+    border: 1px solid black;
+    width: 40%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 30px;
+}
+
+a:hover{
+    letter-spacing: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+a:visited{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: green;
+    background-color: yellow;
+}

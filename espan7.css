@@ -1,0 +1,45 @@
+/*Estilos para h2 y p*/
+h2{
+	color: black;
+	font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: bold;
+	border-bottom: 5px solid turquoise;
+	padding-bottom: 5px;
+	margin-top: 20px;
+	background-color: lavender;
+}
+
+p{
+	color: darkblue;
+	background-color: white;
+	font-family: arial, verdana, sans-serif;
+    font-variant: small-caps;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+/*Estilos para id únicos*/
+span#izq{
+    text-align: left; text-decoration: underline; text-transform: capitalize;
+}
+span#cen{
+    text-align: center; text-decoration: overline; text-transform: uppercase;
+}
+span#der{
+    text-align: right; text-decoration: line-through; text-transform: lowercase;
+}
+/*Estilos para blanco y tinto*/
+a {
+    color: blue;
+}
+
+/*Para los enlaces blancos creo una clase*/
+a.blanco {
+    color: #FFBB00;
+}
+
+/*Para los enlaces tintos creo otra clase*/
+a.tinto {
+    color: #800000;
+}
