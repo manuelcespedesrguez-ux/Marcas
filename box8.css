@@ -1,0 +1,17 @@
+/*Estilos para h2 y p*/
+h2{
+	color: black;
+	font-family: sans-serif;
+	border: 2px solid #3498db;
+	background-color: aliceblue;
+	margin: 10px 255px 8px 30px;
+}
+
+p{
+	color: rgb(211, 176, 22);
+	font-family: sans-serif;
+    margin: 3px 30px;
+    padding-left: 70px;
+    border: 2px solid #3498db;
+}
+
