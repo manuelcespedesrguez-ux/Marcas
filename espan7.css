@@ -29,6 +29,14 @@ span#cen{
 span#der{
     text-align: right; text-decoration: line-through; text-transform: lowercase;
 }
+
+div#democrats {
+background-color: blue;
+}
+
+div#republicans {
+background-color: red;
+}
 /*Estilos para blanco y tinto*/
 a {
     color: blue;

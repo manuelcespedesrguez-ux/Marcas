@@ -1,0 +1,22 @@
+div{
+    width: 80%;
+    margin: auto;
+    border-color: rgb(45, 113, 172);
+    border: 2px solid rgb(144, 109, 179);
+}
+
+img{
+    float: right;
+    margin: 15px;
+    /*width: 25%;
+    height: 25%;*/
+    max-width: 80%;
+    max-height: 200px;
+    height: auto;
+
+}
+
+p,h2{
+    margin: 25px;
+    font-size: 1.2em;
+}

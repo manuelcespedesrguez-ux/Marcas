@@ -30,13 +30,16 @@ p{
     text-align: right; text-decoration: line-through; text-transform: lowercase;
 }
 /*Estilos para blanco y tinto*/
-a {color: blue;
+a {
+    color: blue;
 }
 
 /*Para los enlaces blancos creo una clase*/
-a.blanco {color: #FFBB00;
+a.blanco {
+    color: #FFBB00;
 }
 
 /*Para los enlaces tintos creo otra clase*/
-a.tinto {color: #800000;
+a.tinto {
+    color: #800000;
 }
