@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ejercicio 3</title>
+    </head>
+    <body>
+        <div>
+            <h2>Ejercicio 3 examen</h2>
+            <form action="insertar_producto.php" method="post">
+                <fieldset>
+                    <legend>Rellena las opciones siguientes</legend>
+                    <list>
+                        <input type="radio" id="leng" name="Lengua" value="leng">
+                        <label for="leng">Lengua</label>
+                        <br>
+                        <input type="radio" id="mat" name="Matemáticas" value="mat">
+                        <label for="mat">Matemáticas</label>
+                        <br>
+                        <input type="radio" id="hist" name="Historia" value="hist">
+                        <label for="hist">Historia</label>
+                        <br>
+                        <input type="radio" id="geo" name="Geografía" value="geo">
+                        <label for="geo">Geografía</label>
+                        <br>
+                        <select name="asignaturas" id="asig" size="4">
+                            <option value="leng">Lengua</option>
+                            <option value="mat">Matemáticas</option>
+                            <option value="hist">Historia</option>
+                            <option value="geo">Geografía</option>
+                        </select>
+                        <br>
+                        <label for="color">Elija un color</label>
+                        <input type="color" name="color" id="col">
+                        <br>
+                        <label for="instituto">Instituto</label>
+                        <input type="text" name="Instituto" id="instituto">
+                        <label for="estudios">Estudios elegidos</label>
+                        <input type="text" name="Estudios" id="estudios">
+                        <br>
+                        <label for="fic">Elija un fichero</label>
+                        <input type="file" name="fichero" id="fic">
+                        <br>
+                        <input type="checkbox" name="Lunes" id="lun">
+                        <label for="lun">Lunes</label>
+                        <br>
+                        <input type="checkbox" name="Martes" id="mart">
+                        <label for="mart">Martes</label>
+                        <br><input type="checkbox" name="Miercoles" id="mier">
+                        <label for="mier">Miercóles</label>
+                        <br><input type="checkbox" name="Jueves" id="jue">
+                        <label for="jue">Jueves</label>
+                        <br><input type="checkbox" name="Sabado" id="sab">
+                        <label for="sab">Sábado</label>
+                    </list>
+                </fieldset>
+            </form>
+            <form action="insertar_producto.php" method="post">
+                <fieldset>
+                    <legend>Por favor, complete estas opciones</legend>
+                    <list>
+                        <textarea name="rellena" id="rel" cols="40" rows="5">Utilice este recuadro</textarea>
+                        <br>
+                        <label for="color">Elija un color</label>
+                        <input type="color" name="color" id="col">
+                        <br>
+                        <input type="radio" name="Java" id="jav">
+                        <label for="jav">Java</label>
+                        <input type="radio" name="Python" id="pyt">
+                        <label for="pyt">Python</label>
+                        <input type="radio" name="HTML" id="HTML">
+                        <label for="HTML">HTML</label>
+                        <input type="radio" name="Visual Basic" id="vis">
+                        <label for="vis">Visual Basic</label>
+                        <input type="radio" name="CSS" id="CSS">
+                        <label for="CSS">CSS</label>
+                        <br>
+                        <label for="nom">Nombre</label>
+                        <input type="text" name="Nombre" id="nom">
+                        <label for="ape">Apellidos</label>
+                        <input type="text" name="Apellidos" id="ape">
+                        <label for="email">Email</label>
+                        <input type="text" name="Email" id="email">
+                        <label for="tel">Teléfono</label>
+                        <input type="text" name="Telefono" id="tel">
+                    </list>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
