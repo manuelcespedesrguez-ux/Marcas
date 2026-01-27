@@ -1,0 +1,31 @@
+#c1{
+    float: left;
+    width: 33%;
+}
+
+#c2{
+    float: left;
+    width: 33%;
+}
+
+#c3{
+    float: left;
+    width: 33%;
+}
+
+div#main{
+    width: 60%;
+    margin: auto;
+    border: 2px solid rgb(144, 109, 179);
+    background-color: rgb(206, 226, 243);
+}
+
+.floatstop{
+    clear: both;
+}
+
+h2, p{
+    margin: 25px;
+    font-family: sans-serif;
+    font-size: 1.2em;
+}

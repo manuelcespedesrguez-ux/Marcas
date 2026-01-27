@@ -1,0 +1,70 @@
+/*Estilos para h2 y p*/
+h2{
+	color: black;
+	font-family: sans-serif;
+	border: 2px solid #3498db;
+	background-color: aliceblue;
+	margin: 10px 255px 8px 30px;
+    padding: 10px;
+}
+
+p{
+	color: rgb(211, 176, 22);
+	font-family: sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 3px 30px;
+    padding: 70px;
+    border: 2px solid #3498db;
+    background-color: #f9f9f9;
+}
+
+#box1{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 40%;
+    background-color: red;
+}
+
+#box2{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 40%;
+    background-color: blue;
+}
+
+#box3{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 40%;
+    background-color: yellow;
+}
+
+#box4{
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 40%;
+    background-color: green;
+}
+
+#dog1 {
+position:relative;
+left: 350px;
+bottom: 150px;
+}
+
+#dog2 {
+position:relative;
+left: 150px;
+bottom: 500px;
+}
+
+#dog3 {
+position:relative;
+left: 50px;
+bottom: 700px;
+}
