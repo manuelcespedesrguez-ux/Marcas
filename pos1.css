@@ -52,19 +52,21 @@ p{
 }
 
 #dog1 {
-position:relative;
-left: 350px;
-bottom: 150px;
+    border: 5px solid red;
+    position:relative;
+    right: 100px;
+    top: 100px;
 }
 
 #dog2 {
-position:relative;
-left: 150px;
-bottom: 500px;
+    border: 5px solid red;
+    position:relative;
+    left: 150px;
+    bottom: 500px;
 }
 
 #dog3 {
-position:relative;
-left: 50px;
-bottom: 700px;
+    position:relative;
+    left: 250px;
+    bottom: 170px;
 }

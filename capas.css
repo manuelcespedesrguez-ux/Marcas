@@ -1,0 +1,47 @@
+h2{
+	color: black;
+	font-family: sans-serif;
+	border: 2px solid #3498db;
+	background-color: aliceblue;
+	margin: 10px 255px 8px 30px;
+    padding: 10px;
+}
+
+p{
+	color: rgb(211, 176, 22);
+	font-family: sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 3px 30px;
+    padding: 70px;
+    border: 2px solid #3498db;
+    background-color: #f9f9f9;
+}
+
+#oros {
+position: absolute;
+left: 100px;
+top: 100px;
+z-index: 1;
+}
+
+#copas {
+position: absolute;
+left: 150px;
+top: 115px;
+z-index: 2;
+}
+
+#espadas {
+position: absolute;
+left: 200px;
+top: 130px;
+z-index: 3;
+}
+
+#bastos {
+position: absolute;
+left: 250px;
+top: 145px;
+z-index: 4;
+}
