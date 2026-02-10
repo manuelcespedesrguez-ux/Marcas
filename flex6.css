@@ -1,0 +1,29 @@
+div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p{
+    width: 100px;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+p.pollo{
+    background-color: rgb(255, 111, 135);
+}
+p.tomate{
+    background-color: red;
+}
+p.lechuga{
+    background-color: rgb(88, 187, 88);
+}
+p.queso{
+    background-color: rgb(243, 178, 56);
+}
+p.pan{
+    background-color: rgb(230, 165, 101);
+}
+p.cebolla{
+    background-color: purple;
+}

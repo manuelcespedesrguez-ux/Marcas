@@ -1,0 +1,12 @@
+div{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 5px;
+    background-color: #ddd;
+}
+
+p{
+    width: 100px;
+    border: black 1px solid;
+    margin: 2px;
+}

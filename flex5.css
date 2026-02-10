@@ -1,0 +1,26 @@
+.contenedor-padre{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ddd;
+    margin-bottom: 5px;
+}
+
+.hijo-vertical{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: #eee;
+    border: 2px solid #3489db;
+}
+
+.item{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 15px;
+    background-color: #eee;
+    border: 2px solid #3489db;
+}

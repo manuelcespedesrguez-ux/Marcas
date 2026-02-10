@@ -1,0 +1,29 @@
+/*Estilos para cajas*/
+
+h2{
+    font-size: 1.5em;
+    margin: auto;
+    width: 40%;
+    text-align: center;
+}
+
+.anchas {
+    border: 2px solid black;
+    width: 70%;
+    margin: 30px 10%;
+    position: relative;
+    left: 10px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.estrechas{
+    border: 3px dotted red;
+    width: 15%;
+    margin: 30px 0.5% 30px 10%;
+    /*position: relative;*/
+    /*left: 10%;*/
+    float: left;
+    font-weight: bold;
+    padding: 10px;
+}
