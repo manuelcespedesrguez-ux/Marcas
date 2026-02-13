@@ -1,0 +1,11 @@
+/*Estilos para flex 9 ejemplo de css*/
+
+div{
+    display: flex;
+}
+
+p{
+    flex-basis: 120px;
+    border: 2px solid red;
+    margin: 10px;
+}
