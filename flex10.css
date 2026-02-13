@@ -1,0 +1,15 @@
+/*CSS para crecer grow*/
+
+div{
+    display: flex;
+}
+
+p{
+    flex-grow: 1;
+    border: 2px solid red;
+    margin: 2px;
+}
+
+p.mayor{
+    flex-grow: 2;
+}
