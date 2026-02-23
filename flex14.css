@@ -1,0 +1,11 @@
+div {
+    display: flex;
+    justify-content: space-between;
+    border: 3px ridge green;
+}
+
+p {
+    border: 2px solid red;
+    margin: 10px;
+    padding: 5px;
+}

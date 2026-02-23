@@ -1,0 +1,10 @@
+div {
+    display: flex;
+}
+
+p {
+    flex: auto;
+    border: 2px solid red;
+    margin: 10px;
+    padding: 5px;
+}

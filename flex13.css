@@ -1,0 +1,11 @@
+div {
+    display: flex; 
+}
+
+p {
+    border: black 1px solid; margin: 2px; 
+}
+
+p.derecha { 
+    margin-left: auto;
+}
