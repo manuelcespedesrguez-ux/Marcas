@@ -1,0 +1,41 @@
+/* Propiedades comunes  */
+
+html {
+  font-family: sans-serif;
+  hyphens: auto;
+}
+
+article {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.ficha {
+  border: black 2px solid;
+  margin: 10px;
+}
+
+article p {
+  margin: 0;
+  padding: 5px;
+}
+
+p.p1 {
+  text-align: center;
+}
+
+p.p2 {
+  padding: 5px 0;
+  background-color: lightgray;
+  font-size: 150%;
+  font-weight: bold;
+  text-align: center;
+}
+
+p.p3 {
+  text-align: justify;
+}
+
+article.a21 div.ficha {
+  width: 15%;
+}
