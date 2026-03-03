@@ -1,0 +1,54 @@
+html {
+  font-family: sans-serif;
+  hyphens: auto;
+}
+
+article {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.ficha {
+  border: black 2px solid;
+  margin: 10px;
+}
+
+article p {
+  margin: 0;
+  padding: 5px;
+}
+
+p.p1 {
+  text-align: center;
+}
+
+p.p2 {
+  padding: 5px 0;
+  background-color: lightgray;
+  font-size: 150%;
+  font-weight: bold;
+  text-align: center;
+}
+
+p.p3 {
+  text-align: justify;
+}
+
+article.a24 {
+  align-items: center;
+}
+
+article.a24 div.ficha {
+  display: flex;
+  flex-direction: row;
+  width: 15%;
+}
+
+article.a24 p.p1 {
+  border-right: black 2px solid;
+  font-size: 400%;
+}
+
+article.a24 p.p3 {
+  background-color: lightgray;
+}

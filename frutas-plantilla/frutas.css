@@ -89,29 +89,28 @@ article.a21 div.ficha {
 
 /* * * * * * * * * * * * * * * * * * */
 /* A22 */
-/* * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * */
 
 article.a22 {
-  align-items: ;
+  align-items: center;
 }
 
 article.a22 div.ficha {
-  width: ;
+  width: 15%;
 }
 
 article.a22 p.p2 {
   border-bottom: black 2px solid;
 }
 
-
 /* * * * * * * * * * * * * * * * * * */
 /* A23 */
-/* * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * */
 
 article.a23 div.ficha {
-  display: ;
-  flex-direction: ;
-  width: ;
+  display: flex;
+  flex-direction: row;
+  width: 15%;
 }
 
 article.a23 p.p1 {
@@ -121,16 +120,16 @@ article.a23 p.p1 {
 
 /* * * * * * * * * * * * * * * * * * */
 /* A24 */
-/* * * * * * * * * * * * * * * * * * *
+/* * * * * * * * * * * * * * * * * * */
 
 article.a24 {
-  align-items: ;
+  align-items: center;
 }
 
 article.a24 div.ficha {
-  display: ;
-  flex-direction: ;
-  width: ;
+  display: flex;
+  flex-direction: row;
+  width: 15%;
 }
 
 article.a24 p.p1 {
