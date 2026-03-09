@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- Declaración de elemento raíz llamado en este caso COLECCION -->
+    <xs:element name="COLECCION">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CD" maxOccurs="unbounded"/>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+<!-- Declaración de elemento CD -->
+</xs:schema>
