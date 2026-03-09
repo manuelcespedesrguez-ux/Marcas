@@ -5,10 +5,34 @@
     <xs:element name="COLECCION">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="CD" maxOccurs="unbounded"/>
-
+                <xs:element name="CD" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
 <!-- Declaración de elemento CD -->
+    <xs:element name="CD">
+       <xs:complexType>
+            <xs:sequence>
+                <xs:sequence>
+                    <xs:element name="TITLE" />
+                    <xs:element name="ARTIST" />
+                    <xs:element name="COUNTRY" />
+                    <xs:element name="COMPANY" />
+                    <xs:element name="PRICE" />
+                    <xs:element name="YEAR" />
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Declaración de elementos finales -->
+    <xs:element name="TITLE" type="xs:string"/>
+    <xs:element name="ARTIST" type="xs:string"/>
+    <!-- Se podría haber declarado el país como un enumerado -->
+    <xs:element name="COUNTRY" type="xs:string"/>
+    <!-- Se podría haber declarado el COMPANY como un enumerado -->
+    <xs:element name="COMPANY" type="xs:string"/>
+    <xs:element name="PRICE" type="xs:decimal"/>
+    <xs:element name="YEAR" type="xs:integer"/>
 </xs:schema>
