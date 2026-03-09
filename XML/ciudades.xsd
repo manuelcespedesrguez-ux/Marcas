@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="NOMBRE" type="xs:string"/>
-  <xs:element name="PAIS" type="xs:string"/>
-  <xs:element name="CONTINENTE" type="xs:string"/>
+    <xs:element name="NOMBRE" type="xs:string" />
+    <xs:element name="PAIS" type="xs:string" />
+    <xs:element name="CONTINENTE" type="xs:string" />
 
-  <xs:element name="CIUDAD">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="NOMBRE"/>
-        <xs:element ref="PAIS"/>
-        <xs:element ref="CONTINENTE"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+    <xs:element name="CIUDAD">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="NOMBRE" />
+                <xs:element ref="PAIS" />
+                <xs:element ref="CONTINENTE" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-  <xs:element name="CIUDADES">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="CIUDAD" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+    <xs:element name="CIUDADES">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="CIUDAD" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 </xs:schema>
