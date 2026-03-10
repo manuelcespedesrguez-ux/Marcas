@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+        <!-- Definición de elementos finales -->
+            <xs:element name="NOMBRE"   type="xs:string" />
+            <xs:element name="APELLIDO" type="xs:string" />
+            <xs:element name="EDAD"     type="xs:integer" />
+            <xs:element name="DEPARTAMENTO" type="xs:string" />
+            <xs:element name="CARGO"    type="xs:string" />
+       
+        <!-- Elemento complejo empleado -->
+            <xs:element name="EMPLEADO">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="NOMBRE" />
+                        <xs:element ref="APELLIDO" />
+                        <xs:element ref="EDAD" />
+                        <xs:element ref="DEPARTAMENTO" />
+                        <xs:element ref="CARGO" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        <!-- Elemento raíz Empleados-->
+            <xs:element name="EMPLEADOS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="EMPLEADO" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+</xs:schema>

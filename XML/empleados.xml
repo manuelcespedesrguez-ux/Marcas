@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EMPLEADOS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="empleados.xsd">
+
+        <EMPLEADO>
+            <NOMBRE>Ana</NOMBRE>
+            <APELLIDO>García</APELLIDO>
+            <EDAD>30</EDAD>
+            <DEPARTAMENTO>Ventas</DEPARTAMENTO>
+            <CARGO>Ejecutivo de ventas</CARGO>
+        </EMPLEADO>
+        <EMPLEADO>
+            <NOMBRE>Luis</NOMBRE>
+            <APELLIDO>Rodríguez</APELLIDO>
+            <EDAD>45</EDAD>
+            <DEPARTAMENTO>Finanzas</DEPARTAMENTO>
+            <CARGO>Analista de financiero</CARGO>
+        </EMPLEADO>
+        <EMPLEADO>
+            <NOMBRE>María</NOMBRE>
+            <APELLIDO>López</APELLIDO>
+            <EDAD>28</EDAD>
+            <DEPARTAMENTO>Marketing</DEPARTAMENTO>
+            <CARGO>Especialista en redes sociales</CARGO>
+        </EMPLEADO>
+
+</EMPLEADOS>
