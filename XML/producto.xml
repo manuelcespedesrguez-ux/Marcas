@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="producto.xsd">
+    
+    <producto>
+        <nombre>Teléfono móvil</nombre>
+        <precio>299.99</precio>
+        <cantidad>10</cantidad>
+    </producto>
+    
+    <producto>
+        <nombre>Ordenador portátil</nombre>
+        <precio>899.99</precio>
+        <cantidad>5</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Auriculares inalámbricos</nombre>
+        <precio>59.50</precio>
+        <cantidad>25</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Monitor 27 pulgadas</nombre>
+        <precio>185.00</precio>
+        <cantidad>8</cantidad>
+    </producto>
+    
+    <producto>
+        <nombre>Teclado mecánico</nombre>
+        <precio>45.99</precio>
+        <cantidad>15</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Ratón gaming</nombre>
+        <precio>32.00</precio>
+        <cantidad>20</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Disco duro externo 1TB</nombre>
+        <precio>54.90</precio>
+        <cantidad>12</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Silla de oficina</nombre>
+        <precio>120.00</precio>
+        <cantidad>4</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Cámara web Full HD</nombre>
+        <precio>49.95</precio>
+        <cantidad>18</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Altavoz inteligente</nombre>
+        <precio>35.50</precio>
+        <cantidad>30</cantidad>
+    </producto>
+
+    <producto>
+        <nombre>Tableta gráfica</nombre>
+        <precio>75.00</precio>
+        <cantidad>7</cantidad>
+    </producto>
+    
+    <producto>
+        <nombre>Impresora láser</nombre>
+        <precio>149.00</precio>
+        <cantidad>3</cantidad>
+    </producto>
+
+</tienda>
