@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="tipoGenero">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Fantasía"/>
+            <xs:enumeration value="Ciencia Ficción"/>
+            <xs:enumeration value="Drama"/>
+            <xs:enumeration value="Terror"/>
+            <xs:enumeration value="Policial"/>
+            <xs:enumeration value="Histórica"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="titulo" type="xs:string"/>
+    <xs:element name="autor" type="xs:string"/>
+    <xs:element name="anio" type="xs:integer"/>
+    <xs:element name="genero" type="tipoGenero"/> <xs:element name="libro">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="titulo"/>
+                <xs:element ref="autor"/>
+                <xs:element ref="anio"/>
+                <xs:element ref="genero"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="libreria">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="libro" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
