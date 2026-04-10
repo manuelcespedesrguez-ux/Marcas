@@ -6,9 +6,23 @@
         <edad>20</edad>
         <carrera>Ingeniería Informática</carrera>
     </estudiante>
+    
     <estudiante>
         <nombre>María López</nombre>
         <edad>22</edad>
         <carrera>Arquitectura</carrera>
     </estudiante>
+    
+    <estudiante>
+        <nombre>Carlos García</nombre>
+        <edad>21</edad>
+        <carrera>Medicina</carrera>
+    </estudiante>
+
+    <estudiante>
+        <nombre>Ana Martínez</nombre>
+        <edad>19</edad>
+        <carrera>Derecho</carrera>  
+    </estudiante>
+    
 </universidad>

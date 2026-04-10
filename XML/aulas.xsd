@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <!-- Elementos simples o finales -->
     <xs:element name="nombre" type="xs:string"/>
-    <xs:element name="edad" type="xs:integer"/>
     <xs:element name="carrera" type="xs:string"/>
+
+    <!-- Restricción de edad entre 18 y 59 años -->
+    <xs:element name="edad">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minInclusive value="18"/>
+                <xs:maxInclusive value="59"/>
+            </xs:restriction>
+        </xs:simpleType>
+
     <xs:element name="estudiante">
         <xs:complexType>
             <xs:sequence>
