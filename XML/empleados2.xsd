@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="nombre" type="xs:string" />
-    <xs:element name="apellido" type="xs:string" />
-    <xs:element name="fechanacimiento" type="xs:date" />
-    <xs:element name="salario" type="xs:decimal" />
-    <xs:element name="activo" type="xs:boolean" />
-    <xs:element name="horaentrada" type="xs:time" />
+    <xs:simpleType name="tipoNombre">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z][a-z]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoFechaNacimiento">
+        <xs:restriction base="xs:date">
+            <xs:minInclusive value="1975-01-01"/>
+            <xs:maxInclusive value="1999-12-31"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoSalario">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoHoraEntrada">
+        <xs:restriction base="xs:time">
+            <xs:minInclusive value="06:00:00"/>
+            <xs:maxInclusive value="10:00:00"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="nombre" type="tipoNombre" /> <xs:element name="apellido" type="tipoNombre" /> <xs:element name="fechanacimiento" type="xs:date" />
+    <xs:element name="salario" type="tipoSalario" /> <xs:element name="activo" type="xs:boolean" />
+    <xs:element name="horaentrada" type="tipoHoraEntrada" />
 
     <xs:element name="empleado">
         <xs:complexType>
@@ -27,8 +50,13 @@
             <xs:sequence>
                 <xs:element ref="empleado" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="nombreempresa" type="xs:string" use="required" />
+            <xs:attribute name="nombreempresa" type="xs:string" use="required" fixed="TechCorp" />
         </xs:complexType>
+
+        <xs:unique name="uniqueID">
+            <xs:selector xpath="empleado"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
     </xs:element>
 
 </xs:schema>

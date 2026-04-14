@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="creador">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Guido van Rossum"/>
+                <xs:enumeration value="James Gosling"/>
+                <xs:enumeration value="Bjarne Stroustrup"/>
+                <xs:enumeration value="Brendan Eich"/>
+                <xs:enumeration value="Microsoft"/>
+                <xs:enumeration value="Yukihiro Matsumoto"/>
+                <xs:enumeration value="Rasmus Lerdorf"/>
+                <xs:enumeration value="Apple Inc."/>
+                <xs:enumeration value="Google"/>
+                <xs:enumeration value="Graydon Hoare"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="fecha_creacion" type="xs:gYear"/>
+    
+    <xs:element name="descripcion" type="xs:string"/>
+    
+    <xs:element name="enlace_web" type="xs:anyURI"/>
+
+    <xs:element name="lenguaje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="creador"/>
+                <xs:element ref="fecha_creacion"/>
+                <xs:choice>
+                    <xs:element ref="descripcion"/>
+                    <xs:element ref="enlace_web"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="nombre" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="programacion">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lenguaje" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
