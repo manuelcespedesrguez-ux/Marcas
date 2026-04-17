@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lib:libro xmlns:lib="http://www.ejemplo.com/libro"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ejemplo.com/libro ejemplo1.xsd">
+
+    <lib:titulo>El Quijote</lib:titulo>
+    <lib:autor>Miguel de Cervantes</lib:autor>
+    <lib:anio>1605</lib:anio>
+
+</lib:libro>

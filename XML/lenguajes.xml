@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:noNamespaceSchemaLocation="lenguajes.xsd">
+
+  <book prestado="true"> 
+    <title>Clean Code: A Handbook of Agile Software Craftsmanship</title>
+    <author>Robert C. Martin</author>
+    <year>2008</year>
+    <publisher>Prentice Hall</publisher>
+  </book>
+
+  <book prestado="true">
+    <title>Introduction to Algorithms</title>
+    <author>Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</author>
+    <year>2009</year>
+    <publisher>MIT Press</publisher>
+  </book>
+
+  <book prestado="true">
+    <title>Design Patterns: Elements of Reusable Object-Oriented Software</title>
+    <author>Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides</author>
+    <year>1994</year>
+    <publisher>Addison-Wesley</publisher>
+  </book>
+
+  <book prestado="true">
+    <title>Effective Java</title>
+    <author>Joshua Bloch</author>
+    <year>2018</year>
+    <publisher>Addison-Wesley</publisher>
+  </book>
+
+</catalog>

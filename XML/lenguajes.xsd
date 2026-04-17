@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:element name="title" type="xsd:string"/>
+  <xsd:element name="author" type="xsd:string"/>
+  <xsd:element name="year" type="xsd:gYear"/>
+  <xsd:element name="publisher" type="xsd:string"/>
+  <xsd:element name="biblioteca" type="xsd:string"/>
+  <xsd:element name="prestado" type="xsd:boolean"/>
+
+  <xsd:element name="book">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="title"/>
+        <xsd:element ref="author"/>
+        <xsd:element ref="year"/>
+        <xsd:element ref="publisher"/>
+      </xsd:sequence>
+      <xsd:attribute ref="prestado" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="catalog">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="book" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute ref="biblioteca" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
