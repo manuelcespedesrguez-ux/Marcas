@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element ref="operaciones">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="operacion" maxOccurs="unbounded"/>
+            </xs:sequence>
+    </xs:element>
+
+<!-- Declaro operaciones -->
+    <xs:element name="operacion">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="1">
+                <xs:element ref="venta" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="compra" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:choice>    
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="venta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo" type="xs:string" maxOccurs="unbounded"/>
+                <xs:element name="cantidad" type="xs:integer" maxOccurs="unbounded"/>
+                <xs:element name="entregado" type="xs:boolean" minOccurs="0"/>
+                <xs:element ref="importe"/>
+                <xs:element/>
+                <xs:element/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+<!-- Declaro el importe -->
+    <xs:element name="importe">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:double">
+                    <xs:attribute name="moneda" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+<!-- Declaro compras-->
+    <xs:element name="compras">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo" type="xs:string" maxOccurs="unbounded"/>
+                <xs:element name="proveedor" type="xs:string"/>
+                <xs:element ref="fechaCompra" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+<!-- Declaro fechaCompra -->
+    <xs:element name="fechaCompra">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dia" type="xs:integer"/>
+                <xs:element name="mes" type="xs:integer"/>
+                <xs:element name="anio" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

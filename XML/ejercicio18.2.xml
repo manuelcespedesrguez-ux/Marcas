@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operaciones xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:noNamespaceSchemaLocation="ejercicio18.xsd">
+    <operacion>
+        <venta>
+            <titulo>Rayuela</titulo>
+            <titulo>Ficciones</titulo>
+            <cantidad>10</cantidad>
+            <cantidad>15</cantidad>
+            <importe moneda="USD">120.00</importe>
+        </venta>
+    </operacion>
+    <operacion>
+        <venta>
+            <titulo>La ciudad y los perros</titulo>
+            <cantidad>2</cantidad>
+            <entregado>false</entregado>
+            <importe moneda="MXN">450.00</importe>
+        </venta>
+    </operacion>
+</operaciones>

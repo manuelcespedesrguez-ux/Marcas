@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operaciones xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xsi:noNamespaceSchemaLocation="ejercicio18.xsd">
+    <operacion>
+        <venta>
+            <titulosvendidos>
+                <titulo>El ingenioso hidalgo Don Quijote de la Mancha</titulo>
+                <titulo>Cien años de soledad</titulo>
+                <cantidad_total>2</cantidad_total>
+                <entregado>Sí</entregado>
+                <importe moneda="EUR">45.50</importe>
+            </titulosvendidos>
+        </venta>
+    </operacion>
+
+    <operacion>
+        <compra>
+            <tituloscomprados>
+                <titulo>Fundamentos de SQL</titulo>
+                <proveedor>Editorial TecnoMundo</proveedor>
+                <fecha_compra>
+                    <dia>21</dia>
+                    <mes>04</mes>
+                    <año>2026</año>
+                </fecha_compra>
+            </tituloscomprados>
+        </compra>
+    </operacion>
+</operaciones>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operaciones xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:noNamespaceSchemaLocation="ejercicio18.xsd">
+    <operacion>
+        <venta>
+            <titulo>Cien años de soledad</titulo>
+            <cantidad>5</cantidad>
+            <entregado>true</entregado>
+            <importe moneda="EUR">75.50</importe>
+        </venta>
+        
+        <compra>
+            <titulo>Don Quijote de la Mancha</titulo>
+            <proveedor>Editorial Alfaguara</proveedor>
+            <fechaCompra>
+                <dia>21</dia>
+                <mes>04</mes>
+                <anio>2026</anio>
+            </fechaCompra>
+        </compra>
+    </operacion>
+</operaciones>
