@@ -16,6 +16,8 @@
   <!-- CSS de Bootstrap 5.3 (Enlazado vía CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Enlace para que funcionen los iconos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <meta name="theme-color" content="#712cf9" />
   <style>
@@ -158,6 +160,115 @@
     .navbar {
       background-color: #212529 !important;
     }
+
+    /* Botón de la tarjeta */
+    .btn-outline-primary {
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0d6efd !important;
+        color: white !important;
+    }
+
+    /* Evitar que se quede azul al soltar el clic */
+    .btn-outline-primary:focus, .btn-outline-primary:active {
+        background-color: transparent !important;
+        color: #0d6efd !important;
+        box-shadow: none !important;
+    }
+    /* Fuerza a que todas las tarjetas de la fila tengan la misma altura */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        height: 100%; /* La tarjeta ocupa todo el alto de su columna */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-body {
+        flex-grow: 1; /* El cuerpo se estira para llenar el espacio vacío */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Alinea el título arriba y el botón abajo */
+    }
+
+    /* Limita el tamaño del texto para que no deforme la caja */
+    .card-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Solo muestra 3 líneas de texto */
+        -webkit-box-orient: vertical;
+    }
+    /* Para el título principal */
+    h1.fw-light {
+        font-weight: 800 !important; /* Más negrita para estilo deportivo */
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #1a1a1a;
+    }
+
+    /* Mejora de los botones */
+    .btn-primary {
+        background-color: #e10600 !important; /* Rojo oficial de rally */
+        border-color: #e10600 !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #b30500 !important;
+        transform: scale(1.05); /* Efecto de crecimiento al pasar el cursor */
+    }
+    /* Aumenta el contraste global de los textos del Hero */
+    h1 {
+        text-transform: uppercase;
+        letter-spacing: -1px; /* Estilo más agresivo y compacto */
+        text-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Sutil relieve */
+    }
+
+    /* En modo oscuro, aseguramos que el blanco sea puro y no gris */
+    [data-bs-theme="dark"] .text-body {
+        color: #ffffff !important;
+    }
+
+    /* En modo claro, aseguramos que el negro sea intenso */
+    [data-bs-theme="light"] .text-body {
+        color: #000000 !important;
+    }
+    /* Estilo para las barras verticales separadoras */
+    .border-start {
+        border-width: 2px !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Para que en móviles las líneas no queden raras, las ocultamos */
+    @media (max-width: 768px) {
+        .border-start {
+            border-left: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    /* Efecto para los botones al pasar el ratón */
+    .btn-lg {
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-lg:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(225, 6, 0, 0.4) !important;
+    }
+
+    /* Estilo para el título del Grupo B */
+    h2.text-warning {
+        text-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+        font-style: italic;
+    }
   </style>
 </head>
 
@@ -217,38 +328,90 @@
         <div class="row">
           <div class="col-sm-8 col-md-7 py-4">
             <h4>WRC: El Desafío Total</h4>
-            <p class="text-body-secondary">Siente la adrenalina del Campeonato Mundial de Rally enfrentándose al crono.</p>
-              <ul class="text-white list-unstyled">
-                <li><strong>Superficies:</strong> Desde el hielo de Monte-Carlo hasta el calor de Grecia.</li>
-                <li><strong>Tecnología:</strong> Motores híbridos con más de 500 CV de potencia.</li>
-                <li><strong>Héroes:</strong> Pilotos a más de 180 km/h entre árboles.</li>
-                <div class="mt-3">
-                  <h5 class="text-white border-bottom border-danger d-inline-block">Ficha Técnica Rally1</h5>
-                  <table class="table table-dark table-sm table-borderless mt-2" style="font-size: 0.85rem; opacity: 0.9;">
-                    <tbody>
-                      <tr>
-                        <td><strong>Potencia:</strong></td>
-                        <td>500+ CV (Híbrido)</td>
-                      </tr>
-                      <tr>
-                        <td><strong>0-100 km/h:</strong></td>
-                        <td>Menos de 3 segundos</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Tracción:</strong></td>
-                        <td>Total (4WD) con diferencial central</td>
-                      </tr>
-                    </tbody>
-                  </table>
+            <p class="text-body-secondary">Siente la adrenalina del Campeonato Mundial de Rally enfrentándose al crono.
+            </p>
+            <ul class="text-white list-unstyled">
+              <li><strong>Superficies:</strong> Desde el hielo de Monte-Carlo hasta el calor de Grecia.</li>
+              <li><strong>Tecnología:</strong> Motores híbridos con más de 500 CV de potencia.</li>
+              <li><strong>Héroes:</strong> Pilotos a más de 180 km/h entre árboles.</li>
+              <div class="row mt-4 g-4">
+                <!-- Columna Rally1 (Ahora integrada) -->
+                <div class="col-md-3 ps-4">
+                  <h5 class="text-white border-bottom border-danger pb-2">Ficha Rally1</h5>
+                  <div class="row mt-3">
+                    <div class="col-6 text-body-secondary small">Potencia:</div>
+                    <div class="col-6 text-white small">500+ CV</div>
+                    <div class="col-6 text-body-secondary small">0-100 km/h:</div>
+                    <div class="col-6 text-white small">3s</div>
+                    <div class="col-6 text-body-secondary small">Tracción:</div>
+                    <div class="col-6 text-white small">4WD Central</div>
+                    <div class="col-6 text-body-secondary small">Peso mín:</div>
+                    <div class="col-6 text-white small">1180 kg</div>
+                    <div class="col-6 text-body-secondary small">Motor:</div>
+                    <div class="col-6 text-white small">1.6L Turbo - Motor Eléctrico </div>
+                  </div>
                 </div>
-              </ul>
+
+                <!-- Columna Rally2 -->
+                <div class="col-md-3 border-start border-danger ps-4">
+                  <h5 class="text-white border-bottom border-danger pb-2">Ficha Rally2</h5>
+                  <div class="row mt-3">
+                    <div class="col-6 text-body-secondary small">Potencia:</div>
+                    <div class="col-6 text-white small">~290 CV</div>
+                    <div class="col-6 text-body-secondary small">0-100 km/h:</div>
+                    <div class="col-6 text-white small">3,5s</div>
+                    <div class="col-6 text-body-secondary small">Tracción:</div>
+                    <div class="col-6 text-white small">4WD</div>
+                    <div class="col-6 text-body-secondary small">Peso mín:</div>
+                    <div class="col-6 text-white small">1230 kg</div>
+                    <div class="col-6 text-body-secondary small">Motor:</div>
+                    <div class="col-6 text-white small">1.6L Turbo</div>
+                  </div>
+                </div>
+
+                <!-- Columna Rally3 -->
+                <div class="col-md-3 border-start border-danger ps-4">
+                  <h5 class="text-white border-bottom border-danger pb-2">Ficha Rally3</h5>
+                  <div class="row mt-3">
+                    <div class="col-6 text-body-secondary small">Potencia:</div>
+                    <div class="col-6 text-white small">~215 CV</div>
+                    <div class="col-6 text-body-secondary small">0-100 km/h:</div>
+                    <div class="col-6 text-white small">5,2s</div>
+                    <div class="col-6 text-body-secondary small">Tracción:</div>
+                    <div class="col-6 text-white small">4WD</div>
+                    <div class="col-6 text-body-secondary small">Peso mín:</div>
+                    <div class="col-6 text-white small">1210 kg</div>
+                    <div class="col-6 text-body-secondary small">Motor:</div>
+                    <div class="col-6 text-white small">1.5L Turbo</div>
+                  </div>
+                </div>
+
+                <!-- Columna Rally4 -->
+                <div class="col-md-3 border-start border-danger ps-4">
+                  <h5 class="text-white border-bottom border-danger pb-2">Ficha Rally4</h5>
+                  <div class="row mt-3">
+                    <div class="col-6 text-body-secondary small">Potencia:</div>
+                    <div class="col-6 text-white small">~210 CV</div>
+                    <div class="col-6 text-body-secondary small">0-100 km/h:</div>
+                    <div class="col-6 text-white small">5,2s</div>
+                    <div class="col-6 text-body-secondary small">Tracción:</div>
+                    <div class="col-6 text-white small">2WD (Del.)</div>
+                    <div class="col-6 text-body-secondary small">Peso mín:</div>
+                    <div class="col-6 text-white small">1030 kg</div>
+                    <div class="col-6 text-body-secondary small">Motor:</div>
+                    <div class="col-6 text-white small">1.3L Turbo</div>
+                  </div>
+                </div>
+              </div>
+            </ul>
           </div>
           <div class="col-sm-4 offset-md-1 py-4">
             <h4>Enlaces WRC</h4>
             <ul class="list-unstyled">
               <li><a href="https://www.wrc.com" class="text-white" target="_blank">🌐 Web Oficial</a></li>
               <li><a href="https://www.rally.tv" class="text-white" target="_blank">📺 Ver Rally.TV</a></li>
-              <li><a href="https://twitter.com/OfficialWRC" class="text-white" target="_blank">🐦 Última hora (X)</a></li>
+              <li><a href="https://twitter.com/OfficialWRC" class="text-white" target="_blank">🐦 Última hora (X)</a>
+              </li>
               <li><a href="mailto:info@wrc.com" class="text-white">📧 Contacto FIA</a></li>
             </ul>
           </div>
@@ -257,14 +420,9 @@
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
-        <a href="#" class="navbar-brand d-flex align-items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
-            viewBox="0 0 24 24">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-            <circle cx="12" cy="13" r="4"></circle>
-          </svg>
-          <strong>Album</strong>
+        <a href="#" class="navbar-brand d-flex align-items-center text-white">
+          <i class="bi bi-speedometer2 me-2"></i> <!-- Ahora sí aparecerá -->
+          <strong class="text-white">WRC FAN ZONE</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
           aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -278,13 +436,18 @@
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">WRC: Velocidad al límite</h1>
-          <p class="lead text-body-secondary">Siente la adrenalina del Campeonato Mundial de Rally. Tierra, 
+          <h1 class="display-4 fw-bold text-emphasis-variant">WRC: Velocidad al límite</h1>
+          <p class="lead fw-normal text-body">Siente la adrenalina del Campeonato Mundial de Rally. Tierra,
             asfalto, nieve y los mejores pilotos del planeta enfrentándose al crono en las condiciones más extremas.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
+          <div class="d-flex justify-content-center gap-3 mt-4 mb-5">
+            <a href="#" class="btn btn-danger btn-lg rounded-pill px-5 fw-bold shadow">
+              <i class="bi bi-calendar3 me-2"></i>Próximos Rallys
+            </a>
+            <!-- Cambiado a btn-outline-dark para que se vea siempre -->
+            <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold shadow">
+              <i class="bi bi-trophy me-2"></i>Clasificación
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -294,16 +457,16 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <!-- Primero los WRC -->
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="toyota.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>Edición Limitada:</strong> El GR Yaris no solo compite, redefine la
+                <p class="card-text"><strong>Toyota GR Yaris Rally1:</strong> El GR Yaris no solo compite, redefine la
                   ingeniería de los coches de calle inspirados en rally.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC - Turbo</small>
                 </div>
@@ -311,16 +474,16 @@
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="hyundai.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>Hyundai Shell Mobis:</strong> El i20 N Rally1 es pura potencia coreana,
+                <p class="card-text"><strong>Hyundai Shell Mobis Rally1:</strong> El i20 N Rally1 es pura potencia coreana,
                   diseñado para dominar sobre asfalto y tierra.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC - Híbrido</small>
                 </div>
@@ -328,16 +491,16 @@
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="ford.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>M-Sport Ford:</strong> El Puma Rally1 destaca por su agilidad y su
+                <p class="card-text"><strong>M-Sport Ford Rally1:</strong> El Puma Rally1 destaca por su agilidad y su
                   icónica decoración Blue Oval en cada tramo.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC - Híbrido</small>
                 </div>
@@ -354,16 +517,16 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <!-- Repetir tarjetas según sea necesario -->
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="toyota2.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>GR Yaris Rally2:</strong> El último en llegar. La ingeniería de Toyota
+                <p class="card-text"><strong>Toyota GR Yaris Rally2:</strong> El último en llegar. La ingeniería de Toyota
                   aplicada a los equipos privados.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC2</small>
                 </div>
@@ -371,16 +534,16 @@
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="skoda.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>Skoda Fabia RS:</strong> El referente de la categoría Rally2. Fiabilidad
+                <p class="card-text"><strong>Skoda Fabia RS Rally2:</strong> El referente de la categoría Rally2. Fiabilidad
                   y velocidad punta en cualquier superficie.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC2</small>
                 </div>
@@ -388,16 +551,16 @@
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card h-100 bg-dark text-white shadow-sm">
               <img src="citroen.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
               <div class="card-body">
-                <p class="card-text"><strong>Citroën C3:</strong> Especialista en asfalto, un coche técnico y muy
+                <p class="card-text"><strong>Citroën C3 Rally2:</strong> Especialista en asfalto, un coche técnico y muy
                   competitivo en el campeonato europeo.</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalCitroen" onclick="cambiarTab('detalles')">
+                      Más información
+                    </button>
                   </div>
                   <small class="text-body-secondary">WRC2</small>
                 </div>
@@ -413,16 +576,16 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <!-- Repetir tarjetas según sea necesario -->
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="forito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Ford Fiesta:</strong> El pionero de la categoría. Tracción total para
+                  <p class="card-text"><strong>Ford Fiesta Rally3:</strong> El pionero de la categoría. Tracción total para
                     dar el salto desde los fórmulas de iniciación.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalFord" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC3</small>
                   </div>
@@ -430,16 +593,16 @@
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="renault.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Renault Clio:</strong> Eficiencia francesa. Un coche equilibrado para
+                  <p class="card-text"><strong>Renault Clio Rally3:</strong> Eficiencia francesa. Un coche equilibrado para
                     pilotos que buscan su primer 4x4.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalRenault" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC3</small>
                   </div>
@@ -447,16 +610,16 @@
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="lancia.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Lancia Ypsilon:</strong> El regreso de la leyenda italiana. Un Rally3
+                  <p class="card-text"><strong>Lancia Ypsilon Rally3:</strong> El regreso de la leyenda italiana. Un Rally3
                     diseñado para dominar la tracción total de acceso.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLancia" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC3</small>
                   </div>
@@ -473,16 +636,16 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <!-- Repetir tarjetas según sea necesario -->
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="peugeot.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Peugeot 208:</strong> El rey de las copas de promoción. Ligero, nervioso
+                  <p class="card-text"><strong>Peugeot 208 Rally4:</strong> El rey de las copas de promoción. Ligero, nervioso
                     y extremadamente divertido de ver.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPeugeot" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC4</small>
                   </div>
@@ -490,16 +653,16 @@
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="opel.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Opel Corsa:</strong> Comparte ADN con el 208 pero con una puesta
+                  <p class="card-text"><strong>Opel Corsa Rally4:</strong> Comparte ADN con el 208 pero con una puesta
                     a punto alemana más estable.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalOpel" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC4</small>
                   </div>
@@ -507,16 +670,16 @@
               </div>
             </div>
             <div class="col">
-              <div class="card shadow-sm">
+              <div class="card h-100 bg-dark text-white shadow-sm">
                 <img src="fortito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
                 <div class="card-body">
-                  <p class="card-text"><strong>Fiesta R4:</strong> Con motor Ecoboost de 3 cilindros. El sonido más
+                  <p class="card-text"><strong>Ford Fiesta Rally4:</strong> Con motor Ecoboost de 3 cilindros. El sonido más
                     característico de los tramos.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalFiesta" onclick="cambiarTab('detalles')">
+                        Más información
+                      </button>
                     </div>
                     <small class="text-body-secondary">WRC4</small>
                   </div>
@@ -533,28 +696,135 @@
       <p class="float-end mb-1">
         <a href="#" class="btn btn-outline-danger btn-sm">Subir al podio ↑</a>
       </p>
-      <p class="mb-1 text-white">© 2026 <strong>WRC Fan Zone</strong> - Las mejores máquinas del mundo en un solo lugar.</p>
-      <p class="mb-0 small">Todas las imágenes son propiedad de sus respectivos equipos (Toyota, Hyundai, M-Sport, Lancia).</p>
-      
+      <p class="mb-1 text-white">© 2026 <strong>WRC Fan Zone</strong> - Las mejores máquinas del mundo en un solo lugar.
+      </p>
+      <p class="mb-0 small">Todas las imágenes son propiedad de sus respectivos equipos (Citröen, Ford, Hyundai, Lancia,
+        Peugeot, Opel, Skoda, Toyota).</p>
+
       <!-- Logos de marcas (opcional, se ven muy bien) -->
       <div class="mt-4 pt-3 border-top border-secondary d-flex gap-4 opacity-50 grayscale">
-        <a href="https://citroen-racing.com/"class="text-white text-decoration-none fw-bold">CITRÖEN</a>
+        <a href="https://citroen-racing.com/" class="text-white text-decoration-none fw-bold">CITRÖEN</a>
         <a href="https://www.fordracing.com/" class="text-white text-decoration-none fw-bold">FORD</a>
-        <a href="https://motorsport.hyundai.com/manufacturer-programmes/wrc" class="text-white text-decoration-none fw-bold">HYUNDAI</a>
+        <a href="https://motorsport.hyundai.com/manufacturer-programmes/wrc"
+          class="text-white text-decoration-none fw-bold">HYUNDAI</a>
         <a href="https://www.lancia.com/lancia-rally" class="text-white text-decoration-none fw-bold">LANCIA</a>
         <a href="https://www.opel-motorsport.com/en" class="text-white text-decoration-none fw-bold">OPEL</a>
         <a href="https://peugeot-sport.com/" class="text-white text-decoration-none fw-bold">PEUGEOT</a>
         <a href="https://www.skoda-motorsport.com/en/" class="text-white text-decoration-none fw-bold">SKODA</a>
-        <a href="https://www.toyota.es/world-of-toyota/toyotagazooracing" class="text-white text-decoration-none fw-bold">TOYOTA</a>
+        <a href="https://www.toyota.es/world-of-toyota/toyotagazooracing"
+          class="text-white text-decoration-none fw-bold">TOYOTA</a>
       </div>
     </div>
   </footer>
 
+  <div class="modal fade" id="modalToyota" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-secondary">
+          <ul class="nav nav-tabs card-header-tabs" id="toyotaTabs" role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active text-white" id="detalles-tab" data-bs-toggle="tab"
+                data-bs-target="#detalles" type="button">Detalles</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link text-white" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs"
+                type="button">Especificaciones</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link text-white" id="pilotos-tab" data-bs-toggle="tab" data-bs-target="#pilotos"
+                type="button">Pilotos</button>
+            </li>
+          </ul>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <!-- SECCIÓN DETALLES -->
+            <div class="tab-pane fade show active" id="detalles">
+              <h5>Sobre el GR Yaris Rally1</h5>
+              <p>Es la culminación de la filosofía "Born from WRC". Un coche diseñado para ganar en las condiciones más
+                extremas del mundo.</p>
+            </div>
+            <!-- SECCIÓN ESPECIFICACIONES -->
+            <div class="tab-pane fade" id="specs">
+              <table class="table table-dark">
+                <tr>
+                  <td>Motor</td>
+                  <td>1.6L Turbo Híbrido</td>
+                </tr>
+                <tr>
+                  <td>Potencia</td>
+                  <td>500 CV</td>
+                </tr>
+                <tr>
+                  <td>Tracción</td>
+                  <td>4WD Permanente</td>
+                </tr>
+              </table>
+            </div>
+            <!-- SECCIÓN PILOTOS -->
+            <!-- SECCIÓN PILOTOS ORGANIZADA -->
+            <div class="tab-pane fade" id="pilotos">
+              <div class="row g-3">
+                <!-- Columna Campeones -->
+                <div class="col-md-6">
+                  <div class="p-3 border border-danger rounded bg-black">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-trophy-fill"></i> Campeones del Mundo</h6>
+                    <div class="mb-2">
+                      <small class="text-secondary d-block text-uppercase">Piloto</small>
+                      <span class="fs-5">Kalle Rovanperä</span>
+                    </div>
+                    <div>
+                      <small class="text-secondary d-block text-uppercase">Copiloto</small>
+                      <span class="fs-5">Jonne Halttunen</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Columna Subcampeones -->
+                <div class="col-md-6">
+                  <div class="p-3 border border-secondary rounded bg-black">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-trophy-fill"></i>Subcampeones WRC</h6>
+                    <div class="mb-2">
+                      <small class="text-secondary d-block text-uppercase">Piloto</small>
+                      <span class="fs-5">Elfyn Evans</span>
+                    </div>
+                    <div>
+                      <small class="text-secondary d-block text-uppercase">Copiloto</small>
+                      <span class="fs-5">Scott Martin</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JS de Bootstrap con Popper incluido (Enlazado vía CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
+  <script>
+    function cambiarTab(tipo) {
+      // 1. Encontrar todos los botones de pestañas dentro del modal y los contenidos
+      const tabs = document.querySelectorAll('#modalToyota .nav-link');
+      const contents = document.querySelectorAll('#modalToyota .tab-pane');
+
+      // 2. Limpiar todo (quitar clases active y show)
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => {
+        c.classList.remove('active', 'show');
+      });
+
+      // 3. Activar solo lo que el usuario pidió
+      document.getElementById(tipo + '-tab').classList.add('active');
+      document.getElementById(tipo).classList.add('active', 'show');
+    }
+  </script>
 </body>
 
 </html>
