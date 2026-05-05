@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+  <meta name="generator" content="Astro v5.13.2" />
+  <title>WRC Fan Zone</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+
+  <!-- Script de Modos de Color (Enlazado desde el repositorio oficial de ejemplos de Bootstrap) -->
+  <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+
+  <!-- CSS de Bootstrap 5.3 (Enlazado vía CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <meta name="theme-color" content="#712cf9" />
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: #0000001a;
+      border: solid rgba(0, 0, 0, 0.15);
+      border-width: 1px 0;
+      box-shadow:
+        inset 0 0.5em 1.5em #0000001a,
+        inset 0 0.125em 0.5em #00000026;
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -0.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+
+    .bd-mode-toggle .bi {
+      width: 1em;
+      height: 1em;
+    }
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+      display: block !important;
+    }
+
+    /* Efecto de bandera a cuadros en el borde superior */
+    header {
+      border-bottom: 5px solid #e10600;
+      /* Rojo oficial WRC */
+    }
+
+    /* Tipografía más deportiva para títulos */
+    h1,
+    h4,
+    .navbar-brand {
+      text-transform: uppercase;
+      font-weight: 800 !important;
+      letter-spacing: -1px;
+    }
+
+    /* Badge de "LIVE" para las tarjetas */
+    .card-body {
+      position: relative;
+    }
+
+    .card-body::before {
+      content: "WRC 2024";
+      position: absolute;
+      top: -15px;
+      right: 10px;
+      background: #e10600;
+      color: white;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    header {
+      /* Creamos el patrón de cuadros blancos y negros */
+      background-image:
+        linear-gradient(45deg, #000 25%, transparent 25%),
+        linear-gradient(-45deg, #000 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #000 75%),
+        linear-gradient(-45deg, transparent 75%, #000 75%);
+      background-size: 20px 20px;
+      /* Tamaño de los cuadros */
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #fff;
+      /* Color de fondo de los cuadros claros */
+
+      /* Añadimos un poco de espacio para que se vea el patrón debajo del contenido */
+      padding-bottom: 10px;
+      border-bottom: 4px solid #e10600;
+      /* Mantenemos la línea roja del WRC abajo */
+    }
+
+    /* Para que el contenido del navbar siga siendo oscuro y legible */
+    .navbar {
+      background-color: #212529 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- El resto del cuerpo del HTML se mantiene igual -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
+      </path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
+      </path>
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
+      </path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
+      </path>
+    </symbol>
+  </svg>
+
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+      aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+      <svg class="bi my-1 theme-icon-active" aria-hidden="true">
+        <use href="#circle-half"></use>
+      </svg>
+      <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+      <li><button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+          aria-pressed="false"><svg class="bi me-2 opacity-50" aria-hidden="true">
+            <use href="#sun-fill"></use>
+          </svg>Light</button></li>
+      <li><button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+          aria-pressed="false"><svg class="bi me-2 opacity-50" aria-hidden="true">
+            <use href="#moon-stars-fill"></use>
+          </svg>Dark</button></li>
+      <li><button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+          aria-pressed="true"><svg class="bi me-2 opacity-50" aria-hidden="true">
+            <use href="#circle-half"></use>
+          </svg>Auto</button></li>
+    </ul>
+  </div>
+
+  <header data-bs-theme="dark">
+    <div class="collapse text-bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4>WRC: El Desafío Total</h4>
+            <p class="text-body-secondary">Siente la adrenalina del Campeonato Mundial de Rally enfrentándose al crono.</p>
+              <ul class="text-white list-unstyled">
+                <li><strong>Superficies:</strong> Desde el hielo de Monte-Carlo hasta el calor de Grecia.</li>
+                <li><strong>Tecnología:</strong> Motores híbridos con más de 500 CV de potencia.</li>
+                <li><strong>Héroes:</strong> Pilotos a más de 180 km/h entre árboles.</li>
+                <div class="mt-3">
+                  <h5 class="text-white border-bottom border-danger d-inline-block">Ficha Técnica Rally1</h5>
+                  <table class="table table-dark table-sm table-borderless mt-2" style="font-size: 0.85rem; opacity: 0.9;">
+                    <tbody>
+                      <tr>
+                        <td><strong>Potencia:</strong></td>
+                        <td>500+ CV (Híbrido)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>0-100 km/h:</strong></td>
+                        <td>Menos de 3 segundos</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Tracción:</strong></td>
+                        <td>Total (4WD) con diferencial central</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ul>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4>Enlaces WRC</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://www.wrc.com" class="text-white" target="_blank">🌐 Web Oficial</a></li>
+              <li><a href="https://www.rally.tv" class="text-white" target="_blank">📺 Ver Rally.TV</a></li>
+              <li><a href="https://twitter.com/OfficialWRC" class="text-white" target="_blank">🐦 Última hora (X)</a></li>
+              <li><a href="mailto:info@wrc.com" class="text-white">📧 Contacto FIA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+            viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+          <strong>Album</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">WRC: Velocidad al límite</h1>
+          <p class="lead text-body-secondary">Siente la adrenalina del Campeonato Mundial de Rally. Tierra, 
+            asfalto, nieve y los mejores pilotos del planeta enfrentándose al crono en las condiciones más extremas.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!-- Primero los WRC -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="toyota.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>Edición Limitada:</strong> El GR Yaris no solo compite, redefine la
+                  ingeniería de los coches de calle inspirados en rally.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC - Turbo</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="hyundai.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>Hyundai Shell Mobis:</strong> El i20 N Rally1 es pura potencia coreana,
+                  diseñado para dominar sobre asfalto y tierra.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC - Híbrido</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="ford.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>M-Sport Ford:</strong> El Puma Rally1 destaca por su agilidad y su
+                  icónica decoración Blue Oval en cada tramo.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC - Híbrido</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seguimos con los rallyes 2 -->
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!-- Repetir tarjetas según sea necesario -->
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="toyota2.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>GR Yaris Rally2:</strong> El último en llegar. La ingeniería de Toyota
+                  aplicada a los equipos privados.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC2</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="skoda.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>Skoda Fabia RS:</strong> El referente de la categoría Rally2. Fiabilidad
+                  y velocidad punta en cualquier superficie.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC2</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="citroen.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text"><strong>Citroën C3:</strong> Especialista en asfalto, un coche técnico y muy
+                  competitivo en el campeonato europeo.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                  </div>
+                  <small class="text-body-secondary">WRC2</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continuamos con los rallye3 -->
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <!-- Repetir tarjetas según sea necesario -->
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="forito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Ford Fiesta:</strong> El pionero de la categoría. Tracción total para
+                    dar el salto desde los fórmulas de iniciación.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC3</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="renault.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Renault Clio:</strong> Eficiencia francesa. Un coche equilibrado para
+                    pilotos que buscan su primer 4x4.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC3</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="lancia.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Lancia Ypsilon:</strong> El regreso de la leyenda italiana. Un Rally3
+                    diseñado para dominar la tracción total de acceso.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC3</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Por último los rallye4 -->
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <!-- Repetir tarjetas según sea necesario -->
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="peugeot.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Peugeot 208:</strong> El rey de las copas de promoción. Ligero, nervioso
+                    y extremadamente divertido de ver.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC4</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="opel.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Opel Corsa:</strong> Comparte ADN con el 208 pero con una puesta
+                    a punto alemana más estable.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC4</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src="fortito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body">
+                  <p class="card-text"><strong>Fiesta R4:</strong> Con motor Ecoboost de 3 cilindros. El sonido más
+                    característico de los tramos.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-primary">Detalles</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Especificaciones</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Pilotos</button>
+                    </div>
+                    <small class="text-body-secondary">WRC4</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <footer class="text-body-secondary py-5 bg-dark" data-bs-theme="dark">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#" class="btn btn-outline-danger btn-sm">Subir al podio ↑</a>
+      </p>
+      <p class="mb-1 text-white">© 2026 <strong>WRC Fan Zone</strong> - Las mejores máquinas del mundo en un solo lugar.</p>
+      <p class="mb-0 small">Todas las imágenes son propiedad de sus respectivos equipos (Toyota, Hyundai, M-Sport, Lancia).</p>
+      
+      <!-- Logos de marcas (opcional, se ven muy bien) -->
+      <div class="mt-4 pt-3 border-top border-secondary d-flex gap-4 opacity-50 grayscale">
+        <a href="https://citroen-racing.com/"class="text-white text-decoration-none fw-bold">CITRÖEN</a>
+        <a href="https://www.fordracing.com/" class="text-white text-decoration-none fw-bold">FORD</a>
+        <a href="https://motorsport.hyundai.com/manufacturer-programmes/wrc" class="text-white text-decoration-none fw-bold">HYUNDAI</a>
+        <a href="https://www.lancia.com/lancia-rally" class="text-white text-decoration-none fw-bold">LANCIA</a>
+        <a href="https://www.opel-motorsport.com/en" class="text-white text-decoration-none fw-bold">OPEL</a>
+        <a href="https://peugeot-sport.com/" class="text-white text-decoration-none fw-bold">PEUGEOT</a>
+        <a href="https://www.skoda-motorsport.com/en/" class="text-white text-decoration-none fw-bold">SKODA</a>
+        <a href="https://www.toyota.es/world-of-toyota/toyotagazooracing" class="text-white text-decoration-none fw-bold">TOYOTA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS de Bootstrap con Popper incluido (Enlazado vía CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
