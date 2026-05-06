@@ -9,6 +9,7 @@
   <meta name="generator" content="Astro v5.13.2" />
   <title>WRC Fan Zone</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <!-- Script de Modos de Color (Enlazado desde el repositorio oficial de ejemplos de Bootstrap) -->
   <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
@@ -119,12 +120,8 @@
       letter-spacing: -1px;
     }
 
-    /* Badge de "LIVE" para las tarjetas */
-    .card-body {
-      position: relative;
-    }
-
-    .card-body::before {
+    /* Badge para coches modernos (Rally 1 a Rally 4) */
+    .badge-moderno::before {
       content: "WRC 2024";
       position: absolute;
       top: -15px;
@@ -135,6 +132,22 @@
       font-size: 0.7rem;
       font-weight: bold;
       border-radius: 5px;
+      z-index: 10;
+    }
+
+    /* Badge específico para el Grupo B */
+    .badge-grupo-b::before {
+      content: "GRUPO B";
+      position: absolute;
+      top: -15px;
+      right: 10px;
+      background: #e10600;
+      color: white;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      border-radius: 5px;
+      z-index: 10;
     }
 
     header {
@@ -163,111 +176,230 @@
 
     /* Botón de la tarjeta */
     .btn-outline-primary {
-        transition: all 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .btn-outline-primary:hover {
-        background-color: #0d6efd !important;
-        color: white !important;
+      background-color: #0d6efd !important;
+      color: white !important;
     }
 
     /* Evitar que se quede azul al soltar el clic */
-    .btn-outline-primary:focus, .btn-outline-primary:active {
-        background-color: transparent !important;
-        color: #0d6efd !important;
-        box-shadow: none !important;
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active {
+      background-color: transparent !important;
+      color: #0d6efd !important;
+      box-shadow: none !important;
     }
+
     /* Fuerza a que todas las tarjetas de la fila tengan la misma altura */
     .row {
-        display: flex;
-        flex-wrap: wrap;
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .card {
-        height: 100%; /* La tarjeta ocupa todo el alto de su columna */
-        display: flex;
-        flex-direction: column;
+      height: 100%;
+      /* La tarjeta ocupa todo el alto de su columna */
+      display: flex;
+      flex-direction: column;
     }
 
     .card-body {
-        flex-grow: 1; /* El cuerpo se estira para llenar el espacio vacío */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Alinea el título arriba y el botón abajo */
+      flex-grow: 1;
+      /* El cuerpo se estira para llenar el espacio vacío */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* Alinea el título arriba y el botón abajo */
     }
 
     /* Limita el tamaño del texto para que no deforme la caja */
     .card-text {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* Solo muestra 3 líneas de texto */
-        -webkit-box-orient: vertical;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      /* Solo muestra 3 líneas de texto */
+      -webkit-box-orient: vertical;
     }
+
     /* Para el título principal */
     h1.fw-light {
-        font-weight: 800 !important; /* Más negrita para estilo deportivo */
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #1a1a1a;
+      font-weight: 800 !important;
+      /* Más negrita para estilo deportivo */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a1a1a;
     }
 
     /* Mejora de los botones */
     .btn-primary {
-        background-color: #e10600 !important; /* Rojo oficial de rally */
-        border-color: #e10600 !important;
+      background-color: #e10600 !important;
+      /* Rojo oficial de rally */
+      border-color: #e10600 !important;
     }
 
     .btn-primary:hover {
-        background-color: #b30500 !important;
-        transform: scale(1.05); /* Efecto de crecimiento al pasar el cursor */
+      background-color: #b30500 !important;
+      transform: scale(1.05);
+      /* Efecto de crecimiento al pasar el cursor */
     }
+
     /* Aumenta el contraste global de los textos del Hero */
     h1 {
-        text-transform: uppercase;
-        letter-spacing: -1px; /* Estilo más agresivo y compacto */
-        text-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Sutil relieve */
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      /* Estilo más agresivo y compacto */
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      /* Sutil relieve */
     }
 
     /* En modo oscuro, aseguramos que el blanco sea puro y no gris */
     [data-bs-theme="dark"] .text-body {
-        color: #ffffff !important;
+      color: #ffffff !important;
     }
 
     /* En modo claro, aseguramos que el negro sea intenso */
     [data-bs-theme="light"] .text-body {
-        color: #000000 !important;
+      color: #000000 !important;
     }
+
     /* Estilo para las barras verticales separadoras */
     .border-start {
-        border-width: 2px !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
+      border-width: 2px !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
     }
 
     /* Para que en móviles las líneas no queden raras, las ocultamos */
     @media (max-width: 768px) {
-        .border-start {
-            border-left: none !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
+      .border-start {
+        border-left: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
     }
+
     /* Efecto para los botones al pasar el ratón */
     .btn-lg {
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .btn-lg:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(225, 6, 0, 0.4) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(225, 6, 0, 0.4) !important;
     }
 
     /* Estilo para el título del Grupo B */
     h2.text-warning {
-        text-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
-        font-style: italic;
+      text-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+      font-style: italic;
+    }
+
+    /* Botón que se adapta al tema */
+    [data-bs-theme="dark"] .btn-adaptable {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
+
+    [data-bs-theme="light"] .btn-adaptable {
+      color: #000000 !important;
+      border-color: #000000 !important;
+    }
+
+    /* Hover para que no se pierda el efecto */
+    .btn-adaptable:hover {
+      background-color: #6c757d !important;
+      color: white !important;
+    }
+
+    /* Ajuste para que las fichas del Grupo B no se vean tenues */
+    .text-secondary {
+      color: #adb5bd !important;
+      /* Un gris más claro para que se lea bien en negro */
+    }
+
+    /* Botón de Clasificación inteligente */
+    .btn-outline-custom {
+      border-width: 2px;
+    }
+
+    /* En Modo Claro: Botón Negro */
+    [data-bs-theme="light"] .btn-outline-custom {
+      color: #000 !important;
+      border-color: #000 !important;
+    }
+
+    /* En Modo Oscuro: Botón Blanco Puro (ahora sí se verá) */
+    [data-bs-theme="dark"] .btn-outline-custom {
+      color: #fff !important;
+      border-color: #fff !important;
+    }
+
+    /* --- SECCIÓN GRUPO B --- */
+    .mencion-grupo-b {
+      background-color: #050505 !important;
+      /* Negro casi total para máximo contraste */
+      border-top: 2px solid #ffc107;
+      border-bottom: 2px solid #ffc107;
+    }
+
+    .text-rally-gold {
+      color: #ffc107 !important;
+      /* Amarillo legendario */
+      text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      /* La tarjeta sube un poco */
+      box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3) !important;
+      /* Brillo dorado */
+    }
+        .road-divider {
+        height: 60px;
+        background: #222;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 4px solid #555;
+        border-bottom: 4px solid #555;
+        /* Esto asegura que ignore cualquier margen del padre */
+        width: 100vw; 
+        margin-left: calc(-50vw + 50%);
+        box-sizing: border-box;
+    }
+
+    /* Línea discontinua que ahora recorrerá toda la pantalla */
+    .road-divider::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%; /* Ocupa todo el ancho disponible */
+        height: 4px;
+        background-image: linear-gradient(to right, #fff 50%, transparent 50%);
+        background-size: 60px 100%; /* Líneas un poco más largas para que se vea mejor en pantallas anchas */
+        transform: translateY(-50%);
+    }
+    .img-galeria {
+      width: 100%;
+      height: 250px; /* Ajusta esta altura a tu gusto */
+      object-fit: cover; /* Recorta la imagen para que rellene el espacio sin estirarse */
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .img-galeria:hover {
+      transform: scale(1.05); /* Efecto de zoom suave al pasar el ratón */
+      cursor: pointer;
     }
   </style>
 </head>
@@ -421,7 +553,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a href="#" class="navbar-brand d-flex align-items-center text-white">
-          <i class="bi bi-speedometer2 me-2"></i> <!-- Ahora sí aparecerá -->
+          <i class="bi bi-speedometer2 me-2"></i>
           <strong class="text-white">WRC FAN ZONE</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
@@ -439,12 +571,13 @@
           <h1 class="display-4 fw-bold text-emphasis-variant">WRC: Velocidad al límite</h1>
           <p class="lead fw-normal text-body">Siente la adrenalina del Campeonato Mundial de Rally. Tierra,
             asfalto, nieve y los mejores pilotos del planeta enfrentándose al crono en las condiciones más extremas.</p>
-          <div class="d-flex justify-content-center gap-3 mt-4 mb-5">
-            <a href="#" class="btn btn-danger btn-lg rounded-pill px-5 fw-bold shadow">
+          <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="https://www.wrc.com/en/calendar?rb3TabId=upcoming"
+              class="btn btn-danger btn-lg rounded-pill px-4 fw-bold text-uppercase shadow">
               <i class="bi bi-calendar3 me-2"></i>Próximos Rallys
             </a>
-            <!-- Cambiado a btn-outline-dark para que se vea siempre -->
-            <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold shadow">
+            <a href="https://www.wrc.com/en/results-and-standings/championship-standings"
+              class="btn btn-outline-custom btn-lg rounded-pill px-4 fw-bold text-uppercase shadow">
               <i class="bi bi-trophy me-2"></i>Clasificación
             </a>
           </div>
@@ -456,15 +589,18 @@
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <!-- Primero los WRC -->
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="toyota.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
+              <img
+                src="https://toyotagazooracing.com/-/media/TMC/tgr/global/contents/wrc/images/release/2025/rd08-preview/download/download_01.jpg"
+                class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
                 <p class="card-text"><strong>Toyota GR Yaris Rally1:</strong> El GR Yaris no solo compite, redefine la
                   ingeniería de los coches de calle inspirados en rally.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -473,15 +609,19 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp animate__delay-1s">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="hyundai.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
-                <p class="card-text"><strong>Hyundai Shell Mobis Rally1:</strong> El i20 N Rally1 es pura potencia coreana,
+              <img
+                src="https://c4.wallpaperflare.com/wallpaper/559/911/736/auto-dust-sport-machine-race-hd-wallpaper-preview.jpg"
+                class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
+                <p class="card-text"><strong>Hyundai Shell Mobis Rally1:</strong> El i20 N Rally1 es pura potencia
+                  coreana,
                   diseñado para dominar sobre asfalto y tierra.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -490,15 +630,17 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp animate__delay-s">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="ford.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
+              <img src="https://backiee.com/static/wallpapers/1000x563/406711.jpg" class="card-img-top" alt="WRC Car"
+                style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
                 <p class="card-text"><strong>M-Sport Ford Rally1:</strong> El Puma Rally1 destaca por su agilidad y su
                   icónica decoración Blue Oval en cada tramo.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -516,15 +658,19 @@
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <!-- Repetir tarjetas según sea necesario -->
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="toyota2.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
-                <p class="card-text"><strong>Toyota GR Yaris Rally2:</strong> El último en llegar. La ingeniería de Toyota
+              <img
+                src="https://autohebdosport.com/images/competicion/wrc/2025/noticias/cambio-imagen-repsol-toyota-cachon/yaris_01.jpg"
+                class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
+                <p class="card-text"><strong>Toyota GR Yaris Rally2:</strong> El último en llegar. La ingeniería de
+                  Toyota
                   aplicada a los equipos privados.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -533,15 +679,18 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="skoda.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
-                <p class="card-text"><strong>Skoda Fabia RS Rally2:</strong> El referente de la categoría Rally2. Fiabilidad
+              <img src="https://soymotor.com/sites/default/files/2023-12/Skoda-CoheteSuarez_SoyMotor.jpg"
+                class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
+                <p class="card-text"><strong>Skoda Fabia RS Rally2:</strong> El referente de la categoría Rally2.
+                  Fiabilidad
                   y velocidad punta en cualquier superficie.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -550,15 +699,18 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col animate__animated animate__fadeInUp">
             <div class="card h-100 bg-dark text-white shadow-sm">
-              <img src="citroen.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-              <div class="card-body">
+              <img
+                src="https://automovilismocanario.com/wp-content/uploads/2024/05/Captura-de-Pantalla-2024-05-31-a-las-12.27.21.png"
+                class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+              <div class="card-body badge-moderno">
                 <p class="card-text"><strong>Citroën C3 Rally2:</strong> Especialista en asfalto, un coche técnico y muy
                   competitivo en el campeonato europeo.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalCitroen" onclick="cambiarTab('detalles')">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#modalCitroen" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -574,16 +726,19 @@
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <!-- Repetir tarjetas según sea necesario -->
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="forito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text"><strong>Ford Fiesta Rally3:</strong> El pionero de la categoría. Tracción total para
+                <img
+                  src="https://autohebdosport.com/images/competicion/scer/2025/noticias/RETO-Rally3/ford-fiesta-rally3.jpg"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
+                  <p class="card-text"><strong>Ford Fiesta Rally3:</strong> El pionero de la categoría. Tracción total
+                    para
                     dar el salto desde los fórmulas de iniciación.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalFord" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalFord" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -592,15 +747,19 @@
                 </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="renault.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text"><strong>Renault Clio Rally3:</strong> Eficiencia francesa. Un coche equilibrado para
+                <img
+                  src="https://media.renault.com/wp-content/uploads/2024/01/5e0afedf4e7ccfbdc99b4276ebe6ef5d-l.jpg.webp"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
+                  <p class="card-text"><strong>Renault Clio Rally3:</strong> Eficiencia francesa. Un coche equilibrado
+                    para
                     pilotos que buscan su primer 4x4.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalRenault" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalRenault" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -609,15 +768,19 @@
                 </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="lancia.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text"><strong>Lancia Ypsilon Rally3:</strong> El regreso de la leyenda italiana. Un Rally3
+                <img
+                  src="https://autohebdosport.com/images/competicion/rallyes/2025/vuelta-de-lancia-al-mundial/lancia_03.jpg"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
+                  <p class="card-text"><strong>Lancia Ypsilon Rally3:</strong> El regreso de la leyenda italiana. Un
+                    Rally3
                     diseñado para dominar la tracción total de acceso.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLancia" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalLancia" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -635,15 +798,19 @@
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <!-- Repetir tarjetas según sea necesario -->
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="peugeot.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text"><strong>Peugeot 208 Rally4:</strong> El rey de las copas de promoción. Ligero, nervioso
+                <img
+                  src="https://stellantis3.dam-broadcast.com/medias/domain12808/media101286/385942-0ubjkkn7lm-xlarge.jpg"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
+                  <p class="card-text"><strong>Peugeot 208 Rally4:</strong> El rey de las copas de promoción. Ligero,
+                    nervioso
                     y extremadamente divertido de ver.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPeugeot" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalPeugeot" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -652,15 +819,18 @@
                 </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="opel.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
+                <img
+                  src="https://www.media.stellantis.com/cache/c/c/f/7/d/ccf7d6da613066957b30bcc059ab294385cb8bb8.jpeg"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
                   <p class="card-text"><strong>Opel Corsa Rally4:</strong> Comparte ADN con el 208 pero con una puesta
                     a punto alemana más estable.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalOpel" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalOpel" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -669,15 +839,19 @@
                 </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col animate__animated animate__fadeInUp">
               <div class="card h-100 bg-dark text-white shadow-sm">
-                <img src="fortito.jpg" class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text"><strong>Ford Fiesta Rally4:</strong> Con motor Ecoboost de 3 cilindros. El sonido más
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/58/2020_Rally_Bohemia_-_R%C3%A5dstr%C3%B6m.jpg"
+                  class="card-img-top" alt="WRC Car" style="height: 225px; object-fit: cover;">
+                <div class="card-body badge-moderno">
+                  <p class="card-text"><strong>Ford Fiesta Rally4:</strong> Con motor Ecoboost de 3 cilindros. El sonido
+                    más
                     característico de los tramos.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalFiesta" onclick="cambiarTab('detalles')">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalFiesta" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -687,9 +861,314 @@
               </div>
             </div>
           </div>
+
+          <div class="py-5 w-100"> 
+            <div class="road-divider">
+                <span class="badge rounded-0 bg-warning text-dark px-4 py-2 shadow-lg" 
+                      style="position: absolute; z-index: 2; border: 2px solid #000; font-weight: 900; transform: rotate(-1deg);">
+                  <i class="bi bi-excursion"></i> ATENCIÓN: TRAMO GRUPO B
+                </span>
+            </div>
+          </div>
+
+          <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+              <h2 class="text-warning fw-bold text-uppercase border-bottom border-warning pb-3 mb-5 italic">
+                ⚡ Mención Honorífica: Los Monstruos del Grupo B
+              </h2>
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                <!-- Audi Quattro S1 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img src="https://i.pinimg.com/736x/fa/8b/77/fa8b77b109998835d4a6e383eea35fdb.jpg"
+                      class="card-img-top" alt="Audi Quattro" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <!-- Años del Grupo B donde estaba el cursor -->
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1985 - 1986</span>
+                      </div>
+
+                      <p class="card-text">
+                        <strong>Audi Quattro S1:</strong> La revolución de la tracción total.
+                        Con 550 CV, cambió para siempre la historia del rally.
+                      </p>
+
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalAudi">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">4WD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Lancia 037 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img src="https://backiee.com/static/wallpapers/1920x1080/179705.jpg" class="card-img-top"
+                      alt="Lancia 037" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1982 - 1984</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Lancia 037:</strong> El último rey de la tracción trasera.
+                        Pura ingeniería italiana contra los gigantes del 4x4.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalLancia037">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">RWD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Peugeot 205 T16 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img
+                      src="https://motorgiga.com/cargadatos/fotos2/peugeot/205-t16-Grupo-B-(dos-volumenes)-1985/1600px/exteriores-(1).jpg"
+                      class="card-img-top" alt="Peugeot 205" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1984 - 1986</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Peugeot 205 T16:</strong> El dominador absoluto.
+                        Compacto y letal, arrebató el trono a Audi con su agilidad.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalPeugeot">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">4WD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Lancia Delta S4 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img src="https://i.blogs.es/770ad4/rally-20montecarlo-201986-20-63-/650_1200.jpg"
+                      class="card-img-top" alt="Lancia Delta S4" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1985 - 1986</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Lancia Delta S4:</strong> La bestia del doble turbo y compresor.
+                        Un diseño radical que llevó la ingeniería del Grupo B a su límite absoluto.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalS4">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">4WD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- MG Metro 6R4 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img src="https://eventosmotor.com/wp-content/uploads/2025/08/mg_metro_6r4_group_b_rally_car_2.jpg"
+                      class="card-img-top" alt="MG Metro 6R4" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1985 - 1986</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>MG Metro 6R4:</strong> El rugido del motor V6 atmosférico.
+                        Distintivo por su motor central y su enorme alerón delantero para máximo apoyo.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalMetro">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">4WD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Renault R5 Maxi Turbo -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img src="https://live.staticflickr.com/65535/48296864321_f3244f15be_b.jpg" class="card-img-top"
+                      alt="Renault R5 Maxi Turbo" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1985</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>R5 Maxi Turbo:</strong> El "Culo Gordo" llevado al extremo.
+                        Diseñado específicamente para dominar los tramos de asfalto más revirados.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalMaxi">
+                            Más información
+                          </button>
+                        </div>
+                        <small class="text-warning fw-bold">RWD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Ford rs200 -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <img
+                      src="https://preview.redd.it/the-beautiful-iconic-ford-rs200-group-b-v0-3bjykfrcbht41.jpg?width=640&crop=smart&auto=webp&s=419a1099f7c8c1d81192fb619c2e4845ad358cbc"
+                      class="card-img-top" alt="Ford RS200" style="height: 225px; object-fit: cover;">
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1985</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Ford RS200:</strong> El purasangre diseñado desde cero para el Grupo B.
+                        Chasis de fibra de carbono y motor central para una agilidad pura.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalRS200">Más información</button>
+                        </div>
+                        <small class="text-warning fw-bold">4WD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Toyota Celica -->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <div class="position-relative">
+                      <img
+                        src="https://scene7.toyota.eu/is/image/toyotaeurope/1.WRC-Toyota-Celica?wid=1280&fit=fit,1&ts=0&resMode=sharp2&op_usm=1.75,0.3,2,0"
+                        class="card-img-top" alt="Toyota Celica TCT" style="height: 225px; object-fit: cover;">
+                    </div>
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1983 - 1986</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Toyota Celica TCT:</strong> El "Rey de África". Irrompible y potente,
+                        dominó los rallies más duros del mundo como el Safari.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalCelica">Más información</button>
+                        </div>
+                        <small class="text-warning fw-bold">RWD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Nissan 240RS-->
+                <div class="col animate__animated animate__fadeInUp">
+                  <div class="card h-100 bg-dark text-white shadow-sm border-warning">
+                    <div class="position-relative">
+                      <img
+                        src="https://antilag.files.wordpress.com/2018/03/1982-timo-salonenseppo-harjane-nissan-violet-gts-abandon.jpg"
+                        class="card-img-top" alt="Nissan 240RS" style="height: 225px; object-fit: cover;">
+                    </div>
+                    <div class="card-body badge-grupo-b">
+                      <div class="mb-2">
+                        <span class="badge bg-danger text-uppercase fw-bold">1983 - 1985</span>
+                      </div>
+                      <p class="card-text">
+                        <strong>Nissan 240RS:</strong> Ingeniería japonesa de la vieja escuela.
+                        Un coche fiable y robusto que fue el estandarte de Nissan en la era dorada.
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-grid">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#modalNissan">Más información</button>
+                        </div>
+                        <small class="text-warning fw-bold">RWD</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </main>
+
+  <div class="container my-5">
+    <h2 class="text-warning fw-bold text-uppercase border-bottom border-warning pb-3 mb-4 italic">
+      📸 Galería de Acción: Velocidad Pura
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <img
+          src="https://www.hankooktire-mediacenter.com/fileadmin/user_upload/MediaCenter/pressreleases/2025/11/20251111_WRC_Forum8/img/20251111_WRC_FORUM8_Rally_Japan_01.jpg"
+          class="img-galeria rounded shadow" alt="Acción 1">
+      </div>
+      <div class="col-md-4">
+        <img src="https://wallpapercave.com/wp/wp10539968.jpg" class="img-galeria rounded shadow" alt="Acción 2">
+      </div>
+      <div class="col-md-4">
+        <img src="https://c4.wallpaperflare.com/wallpaper/614/286/556/auto-dust-forest-sport-wallpaper-preview.jpg"
+          class="img-galeria rounded shadow" alt="Acción 3">
+      </div>
+      <div class="col-md-4">
+        <img src="https://i.pinimg.com/736x/43/f0/be/43f0be65e3a1f9b989ec2e78136b4228.jpg"
+          class="img-galeria rounded shadow" alt="Acción 4">
+      </div>
+      <div class="col-md-4">
+        <img
+          src="https://img.redbull.com/images/c_fill,g_auto,w_800,h_533/q_auto:low,f_auto/redbullcom/2025/2/6/vndyyxfgjmcr6itedk8q/wrc-safari-rally-2024-hyundai-neuville"
+          class="img-galeria rounded shadow" alt="Acción 5">
+      </div>
+      <div class="col-md-4">
+        <img src="https://w0.peakpx.com/wallpaper/664/920/HD-wallpaper-rally-group-b-audi-rally.jpg"
+          class="img-galeria rounded shadow" alt="Acción 6">
+      </div>
+      <div class="col-md-4">
+        <img
+          src="https://preview.redd.it/which-one-of-these-group-b-photos-look-the-coolest-there-v0-xp281t8zprj51.jpg?width=640&crop=smart&auto=webp&s=09b1edd32b485ca079ffa6b6bfbc9000c3d886f2"
+          class="img-galeria rounded shadow" alt="Acción 7">
+      </div>
+      <div class="col-md-4">
+        <img
+          src="https://p4.wallpaperbetter.com/wallpaper/185/732/21/wrc-rally-cars-1986-year-lancia-delta-wallpaper-preview.jpg"
+          class="img-galeria rounded shadow" alt="Acción 8">
+      </div>
+      <div class="col-md-4">
+        <img src="https://elacelerador.com/wp-content/uploads/2020/10/portugal-2.jpg" class="img-galeria rounded shadow"
+          alt="Acción 9">
+      </div>
+    </div>
+  </div>
 
   <footer class="text-body-secondary py-5 bg-dark" data-bs-theme="dark">
     <div class="container">
@@ -698,16 +1177,20 @@
       </p>
       <p class="mb-1 text-white">© 2026 <strong>WRC Fan Zone</strong> - Las mejores máquinas del mundo en un solo lugar.
       </p>
-      <p class="mb-0 small">Todas las imágenes son propiedad de sus respectivos equipos (Citröen, Ford, Hyundai, Lancia,
+      <p class="mb-0 small">Todas las imágenes son propiedad de sus respectivos equipos (Audi, Citröen, Ford, Hyundai,
+        Lancia, Nissan,
         Peugeot, Opel, Skoda, Toyota).</p>
 
       <!-- Logos de marcas (opcional, se ven muy bien) -->
       <div class="mt-4 pt-3 border-top border-secondary d-flex gap-4 opacity-50 grayscale">
+        <a href="https://www.audi.es/es/mundo-audi/audi-sport/motorsport/"
+          class="text-white text-decoration-none fw-bold">AUDI</a>
         <a href="https://citroen-racing.com/" class="text-white text-decoration-none fw-bold">CITRÖEN</a>
         <a href="https://www.fordracing.com/" class="text-white text-decoration-none fw-bold">FORD</a>
         <a href="https://motorsport.hyundai.com/manufacturer-programmes/wrc"
           class="text-white text-decoration-none fw-bold">HYUNDAI</a>
         <a href="https://www.lancia.com/lancia-rally" class="text-white text-decoration-none fw-bold">LANCIA</a>
+        <a href="https://www.nismo.com/" class="text-white text-decoration-none fw-bold">NISSAN</a>
         <a href="https://www.opel-motorsport.com/en" class="text-white text-decoration-none fw-bold">OPEL</a>
         <a href="https://peugeot-sport.com/" class="text-white text-decoration-none fw-bold">PEUGEOT</a>
         <a href="https://www.skoda-motorsport.com/en/" class="text-white text-decoration-none fw-bold">SKODA</a>
@@ -796,6 +1279,298 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalAudi" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Audi Quattro S1 E2</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 2.1L 5 cilindros en línea Turbo</p>
+          <p><strong>Potencia:</strong> 550 CV</p>
+          <p><strong>Tracción:</strong> Total (Quattro 4WD)</p>
+          <p><strong>Peso:</strong> 1.090 kg</p>
+          <p><strong>Dato curioso:</strong> Famoso por su espectacular kit aerodinámico y su sonido inconfundible. Fue
+            el primer
+            coche de rally en utilizar un cambio de doble embrague (el antecesor del actual DSG), permitiendo cambios de
+            marcha
+            casi instantáneos para no perder presión en el turbo.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPeugeot" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Peugeot 205 Turbo 16</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 1.8L 4 cilindros Turbo (Central)</p>
+          <p><strong>Potencia:</strong> 450 - 500 CV</p>
+          <p><strong>Tracción:</strong> Total (4WD)</p>
+          <p><strong>Peso:</strong> 910 kg</p>
+          <p><strong>Dato curioso:</strong> El coche más exitoso de los últimos años del Grupo B.
+            Aunque por fuera parecía un pequeño utilitario de calle, por dentro era un
+            chasis tubular con el motor desplazado a la derecha para equilibrar el peso del piloto.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalLancia037" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Lancia Rally 037</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 2.0L con Compresor Volumétrico Abarth</p>
+          <p><strong>Potencia:</strong> 325 CV</p>
+          <p><strong>Tracción:</strong> Trasera (RWD)</p>
+          <p><strong>Peso:</strong> 960 kg</p>
+          <p><strong>Dato curioso:</strong> El último coche de propulsión trasera en ganar un campeonato del mundo
+            frente a los 4x4.
+            En el Rally de Montecarlo de 1983, el equipo Lancia compró toneladas de sal y las esparció por las
+            curvas heladas para que su coche de tracción trasera pudiera ganar a los Audi con tracción total.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalS4" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Lancia Delta S4</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 1.8L Turbo + Compresor</p>
+          <p><strong>Potencia:</strong> 480 CV</p>
+          <p><strong>Tracción:</strong> 4WD</p>
+          <p><strong>Peso:</strong> 890 kg</p>
+          <p><strong>Dato curioso:</strong> Su motor utilizaba un sistema de "doble sobrealimentación": un compresor
+            volumétrico para bajas revoluciones y un turbo para altas, eliminando así el famoso retraso (lag) del turbo.
+          </p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMetro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">MG Metro 6R4</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 3.0L V6 Atmosférico</p>
+          <p><strong>Potencia:</strong> 410 CV</p>
+          <p><strong>Tracción:</strong> 4WD</p>
+          <p><strong>Peso:</strong> 1.030 kg</p>
+          <p><strong>Dato curioso:</strong> El motor V6 que montaba fue diseñado por un ingeniero de Fórmula 1 de
+            Williams y,
+            años más tarde, ese mismo bloque (con dos turbos añadidos) se utilizó para el superdeportivo Jaguar XJ220.
+          </p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMaxi" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Renault R5 Maxi Turbo</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 1.5L Turbo</p>
+          <p><strong>Potencia:</strong> 350 CV</p>
+          <p><strong>Tracción:</strong> RWD</p>
+          <p><strong>Peso:</strong> 905 kg</p>
+          <p><strong>Dato curioso:</strong> El sistema "anti-lag" de su turbo era tan agresivo que escupía llamaradas de
+            casi un
+            metro por el escape, lo que le valió el apodo de "dragón de los tramos".</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalRS200" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Ford RS200</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 1.8L Turbo</p>
+          <p><strong>Potencia:</strong> 450 CV</p>
+          <p><strong>Tracción:</strong> 4WD</p>
+          <p><strong>Peso:</strong> 1.050 kg</p>
+          <p><strong>Dato curioso:</strong> Fue diseñado específicamente para el Grupo B desde cero; a diferencia de sus
+            rivales, no
+            intentaba parecerse a ningún coche de producción masiva de Ford.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalCelica" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Toyota Celica TCT</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 2.1L Turbo</p>
+          <p><strong>Potencia:</strong> 380 CV</p>
+          <p><strong>Tracción:</strong> RWD</p>
+          <p><strong>Peso:</strong> 1.100 kg</p>
+          <p><strong>Dato curioso:</strong> Se ganó el apodo de "Rey de África" tras ganar el durísimo Rally Safari de
+            Kenia tres años consecutivos
+            (1984-1986) gracias a su increíble robustez mecánica.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalNissan" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Nissan 240RS</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 2.4L Atmosférico</p>
+          <p><strong>Potencia:</strong> 240 CV</p>
+          <p><strong>Tracción:</strong> RWD</p>
+          <p><strong>Peso:</strong> 970 kg</p>
+          <p><strong>Dato curioso:</strong> Era el coche preferido de los pilotos privados porque, al no tener turbo
+            (era atmosférico),
+            era mucho más fácil de mantener y más fiable en condiciones de calor extremo.</p>
+          <p class="mb-1">Potencia (CV)</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="mb-1">Relación Peso/Potencia</p>
+          <div class="progress bg-secondary mb-3" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100">
             </div>
           </div>
         </div>
