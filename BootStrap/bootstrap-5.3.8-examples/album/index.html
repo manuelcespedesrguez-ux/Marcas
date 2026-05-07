@@ -9,7 +9,7 @@
   <meta name="generator" content="Astro v5.13.2" />
   <title>WRC Fan Zone</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- Script de Modos de Color (Enlazado desde el repositorio oficial de ejemplos de Bootstrap) -->
   <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
@@ -22,6 +22,22 @@
 
   <meta name="theme-color" content="#712cf9" />
   <style>
+
+    .bg-warning.progress-bar-striped {
+        background-image: linear-gradient(45deg, 
+            rgba(0, 0, 0, 0.25) 25%, 
+            transparent 25%, 
+            transparent 50%, 
+            rgba(0, 0, 0, 0.25) 50%, 
+            rgba(0, 0, 0, 0.25) 75%, 
+            transparent 75%, 
+            transparent) !important;
+        background-size: 1rem 1rem !important;
+    }
+
+    .progress-bar {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+    }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -362,44 +378,56 @@
       box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3) !important;
       /* Brillo dorado */
     }
-        .road-divider {
-        height: 60px;
-        background: #222;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 4px solid #555;
-        border-bottom: 4px solid #555;
-        /* Esto asegura que ignore cualquier margen del padre */
-        width: 100vw; 
-        margin-left: calc(-50vw + 50%);
-        box-sizing: border-box;
+
+    .road-divider {
+      height: 60px;
+      background: #222;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 4px solid #555;
+      border-bottom: 4px solid #555;
+      /* Esto asegura que ignore cualquier margen del padre */
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      box-sizing: border-box;
     }
 
     /* Línea discontinua que ahora recorrerá toda la pantalla */
     .road-divider::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%; /* Ocupa todo el ancho disponible */
-        height: 4px;
-        background-image: linear-gradient(to right, #fff 50%, transparent 50%);
-        background-size: 60px 100%; /* Líneas un poco más largas para que se vea mejor en pantallas anchas */
-        transform: translateY(-50%);
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      /* Ocupa todo el ancho disponible */
+      height: 4px;
+      background-image: linear-gradient(to right, #fff 50%, transparent 50%);
+      background-size: 60px 100%;
+      /* Líneas un poco más largas para que se vea mejor en pantallas anchas */
+      transform: translateY(-50%);
     }
+
     .img-galeria {
       width: 100%;
-      height: 250px; /* Ajusta esta altura a tu gusto */
-      object-fit: cover; /* Recorta la imagen para que rellene el espacio sin estirarse */
+      height: 250px;
+      /* Ajusta esta altura a tu gusto */
+      object-fit: cover;
+      /* Recorta la imagen para que rellene el espacio sin estirarse */
       border-radius: 8px;
       transition: transform 0.3s ease;
     }
 
     .img-galeria:hover {
-      transform: scale(1.05); /* Efecto de zoom suave al pasar el ratón */
+      transform: scale(1.05);
+      /* Efecto de zoom suave al pasar el ratón */
       cursor: pointer;
+    }
+
+    .progress-bar-dinamica {
+      width: var(--porcentaje, 0%);
+      transition: width 1.5s ease-in-out;
     }
   </style>
 </head>
@@ -621,7 +649,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      data-bs-target="#modalHyundai" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -640,7 +668,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      data-bs-target="#modalFord" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -670,7 +698,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      data-bs-target="#modalToyota2" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -690,7 +718,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-grid">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                      data-bs-target="#modalToyota" onclick="cambiarTab('detalles')">
+                      data-bs-target="#modalSkoda" onclick="cambiarTab('detalles')">
                       Más información
                     </button>
                   </div>
@@ -738,7 +766,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
                       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#modalFord" onclick="cambiarTab('detalles')">
+                        data-bs-target="#modalFord3" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -759,7 +787,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
                       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#modalRenault" onclick="cambiarTab('detalles')">
+                        data-bs-target="#modalRenault3" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -780,7 +808,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
                       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#modalLancia" onclick="cambiarTab('detalles')">
+                        data-bs-target="#modalLancia1" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -810,7 +838,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-grid">
                       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#modalPeugeot" onclick="cambiarTab('detalles')">
+                        data-bs-target="#modalPeugeot1" onclick="cambiarTab('detalles')">
                         Más información
                       </button>
                     </div>
@@ -862,12 +890,12 @@
             </div>
           </div>
 
-          <div class="py-5 w-100"> 
+          <div class="py-5 w-100">
             <div class="road-divider">
-                <span class="badge rounded-0 bg-warning text-dark px-4 py-2 shadow-lg" 
-                      style="position: absolute; z-index: 2; border: 2px solid #000; font-weight: 900; transform: rotate(-1deg);">
-                  <i class="bi bi-excursion"></i> ATENCIÓN: TRAMO GRUPO B
-                </span>
+              <span class="badge rounded-0 bg-warning text-dark px-4 py-2 shadow-lg"
+                style="position: absolute; z-index: 2; border: 2px solid #000; font-weight: 900; transform: rotate(-1deg);">
+                <i class="bi bi-excursion"></i> ATENCIÓN: TRAMO GRUPO B
+              </span>
             </div>
           </div>
 
@@ -1246,7 +1274,6 @@
               </table>
             </div>
             <!-- SECCIÓN PILOTOS -->
-            <!-- SECCIÓN PILOTOS ORGANIZADA -->
             <div class="tab-pane fade" id="pilotos">
               <div class="row g-3">
                 <!-- Columna Campeones -->
@@ -1286,6 +1313,196 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalHyundai" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-secondary">
+          <ul class="nav nav-tabs card-header-tabs" id="hyundaiTabs" role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active text-white" id="detalles-tab" data-bs-toggle="tab"
+                data-bs-target="#detalles" type="button">Detalles</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link text-white" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs"
+                type="button">Especificaciones</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link text-white" id="pilotos-tab" data-bs-toggle="tab" data-bs-target="#pilotos"
+                type="button">Pilotos</button>
+            </li>
+          </ul>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <!-- SECCIÓN DETALLES -->
+            <div class="tab-pane fade show active" id="detalles">
+              <h5>Sobre el Hyundai i20 N Rally1</h5>
+              <p>Es pura potencia coreana, diseñado para dominar sobre asfalto y tierra con su avanzado sistema híbrido.</p>
+            </div>
+            <!-- SECCIÓN ESPECIFICACIONES -->
+            <div class="tab-pane fade" id="specs">
+              <table class="table table-dark">
+                <tr>
+                  <td>Motor</td>
+                  <td>1.6L Turbo Híbrido + Motor Eléctrico (100kW)</td>
+                </tr>
+                <tr>
+                  <td>Potencia</td>
+                  <td>+500 CV Combinados</td>
+                </tr>
+                <tr>
+                  <td>Tracción</td>
+                  <td>4WD Permanente</td>
+                </tr>
+              </table>
+            </div>
+            <!-- SECCIÓN PILOTOS -->
+            <div class="tab-pane fade" id="pilotos">
+              <div class="row g-3">
+                <!-- Columna Campeones -->
+                <div class="col-md-6">
+                  <div class="p-3 border border-danger rounded bg-black">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-trophy-fill"></i> Campeones del Mundo</h6>
+                    <div class="mb-2">
+                      <small class="text-secondary d-block text-uppercase">Piloto</small>
+                      <span class="fs-5">Thierry Neuville</span>
+                    </div>
+                    <div>
+                      <small class="text-secondary d-block text-uppercase">Copiloto</small>
+                      <span class="fs-5">Martijn Wydaeghe</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Columna Subcampeones -->
+                <div class="col-md-6">
+                  <div class="p-3 border border-secondary rounded bg-black">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-trophy-fill"></i>Subcampeones WRC</h6>
+                    <div class="mb-2">
+                      <small class="text-secondary d-block text-uppercase">Piloto</small>
+                      <span class="fs-5">Ott Tänak</span>
+                    </div>
+                    <div>
+                      <small class="text-secondary d-block text-uppercase">Copiloto</small>
+                      <span class="fs-5">Martin Järveoja</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalFord" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-secondary">
+        <ul class="nav nav-tabs card-header-tabs" id="fordTabs" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active text-white" data-bs-toggle="tab" data-bs-target="#detallesFord" type="button">Detalles</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#specsFord" type="button">Especificaciones</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#pilotosFord" type="button">Pilotos</button>
+          </li>
+        </ul>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="detallesFord">
+            <h5>Sobre el Ford Puma Rally1</h5>
+            <p>El Puma destaca por su agilidad y su icónica decoración "Blue Oval". Es el primer coche híbrido de la marca desarrollado por M-Sport.</p>
+          </div>
+          <div class="tab-pane fade" id="specsFord">
+            <table class="table table-dark">
+              <tr><td>Motor</td><td>1.6L EcoBoost Híbrido</td></tr>
+              <tr><td>Potencia</td><td>520 CV (con boost eléctrico)</td></tr>
+              <tr><td>Chasis</td><td>Tubular de alta resistencia</td></tr>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="pilotosFord">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 border border-primary rounded bg-black">
+                  <h6 class="fw-bold mb-3">Piloto Principal</h6>
+                  <span class="fs-5">Adrien Fourmaux</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border border-secondary rounded bg-black">
+                  <h6 class="fw-bold mb-3">Piloto Junior</h6>
+                  <span class="fs-5">Grégoire Munster</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalSkoda" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-success">
+      <div class="modal-header border-secondary">
+        <ul class="nav nav-tabs card-header-tabs" id="skodaTabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active text-white" data-bs-toggle="tab" data-bs-target="#detallesSkoda">Detalles</button></li>
+          <li class="nav-item"><button class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#specsSkoda">Specs</button></li>
+          <li class="nav-item"><button class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#pilotosSkoda">Pilotos</button></li>
+        </ul>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="detallesSkoda">
+            <h5>Skoda Fabia RS Rally2</h5>
+            <p>El referente absoluto de la categoría Rally2. Diseñado para ganar en cualquier superficie con una aerodinámica líder en su clase.</p>
+          </div>
+          <div class="tab-pane fade" id="specsSkoda">
+            <table class="table table-dark">
+              <tr><td>Motor</td><td>2.0 Turbo (Limitado por brida)</td></tr>
+              <tr><td>Potencia</td><td>289 CV</td></tr>
+              <tr><td>Par Motor</td><td>425 Nm</td></tr>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="pilotosSkoda">
+            <div class="p-3 border border-success rounded bg-black text-center">
+              <span class="fs-5">Oliver Solberg / Pepe López</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalCitroen" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-danger">
+      <div class="modal-header border-secondary">
+        <ul class="nav nav-tabs card-header-tabs" id="citroenTabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active text-white" data-bs-toggle="tab" data-bs-target="#detallesCitroen">Detalles</button></li>
+          <li class="nav-item"><button class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#specsCitroen">Specs</button></li>
+        </ul>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-pane fade show active" id="detallesCitroen">
+          <h5>Citroën C3 Rally2</h5>
+          <p>Un especialista en asfalto. El C3 es conocido por su chasis comunicativo y su gran rendimiento en campeonatos europeos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <div class="modal fade" id="modalAudi" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -1304,16 +1521,45 @@
             coche de rally en utilizar un cambio de doble embrague (el antecesor del actual DSG), permitiendo cambios de
             marcha
             casi instantáneos para no perder presión en el turbo.</p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (550 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 100%;"></div>
           </div>
+
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 95%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal fade" id="modalLancia037" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-warning">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-warning">Lancia Rally 037</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-start">
+          <p><strong>Motor:</strong> 2.0L con Compresor Volumétrico Abarth</p>
+          <p><strong>Potencia:</strong> 325 CV</p>
+          <p><strong>Tracción:</strong> Trasera (RWD)</p>
+          <p><strong>Peso:</strong> 960 kg</p>
+          <p><strong>Dato curioso:</strong> El último coche de propulsión trasera en ganar un campeonato del mundo
+            frente a los 4x4.
+            En el Rally de Montecarlo de 1983, el equipo Lancia compró toneladas de sal y las esparció por las
+            curvas heladas para que su coche de tracción trasera pudiera ganar a los Audi con tracción total.</p>
+          <p class="mb-1">Potencia (325 CV)</p>
+            <div class="progress bg-secondary mb-3" style="height: 10px;">
+              <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 59%;"></div>
+            </div>
+
+            <p class="mb-1">Relación Peso/Potencia (960 kg)</p>
+            <div class="progress bg-secondary mb-3" style="height: 10px;">
+              <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 78%;"></div>
             </div>
           </div>
         </div>
@@ -1338,47 +1584,14 @@
             chasis tubular con el motor desplazado a la derecha para equilibrar el peso del piloto.</p>
           <p class="mb-1">Potencia (CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%;" aria-valuenow="85"
               aria-valuemin="0" aria-valuemax="100"></div>
           </div>
 
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 95%;" aria-valuenow="95"
               aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalLancia037" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white border-warning">
-        <div class="modal-header border-secondary">
-          <h5 class="modal-title text-warning">Lancia Rally 037</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body text-start">
-          <p><strong>Motor:</strong> 2.0L con Compresor Volumétrico Abarth</p>
-          <p><strong>Potencia:</strong> 325 CV</p>
-          <p><strong>Tracción:</strong> Trasera (RWD)</p>
-          <p><strong>Peso:</strong> 960 kg</p>
-          <p><strong>Dato curioso:</strong> El último coche de propulsión trasera en ganar un campeonato del mundo
-            frente a los 4x4.
-            En el Rally de Montecarlo de 1983, el equipo Lancia compró toneladas de sal y las esparció por las
-            curvas heladas para que su coche de tracción trasera pudiera ganar a los Audi con tracción total.</p>
-          <p class="mb-1">Potencia (CV)</p>
-          <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
-          </div>
-          <p class="mb-1">Relación Peso/Potencia</p>
-          <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
           </div>
         </div>
       </div>
@@ -1400,21 +1613,20 @@
           <p><strong>Dato curioso:</strong> Su motor utilizaba un sistema de "doble sobrealimentación": un compresor
             volumétrico para bajas revoluciones y un turbo para altas, eliminando así el famoso retraso (lag) del turbo.
           </p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (450 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 81%;"></div>
           </div>
-          <p class="mb-1">Relación Peso/Potencia</p>
+
+          <p class="mb-1">Relación Peso/Potencia (910 kg)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 96%;"></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 
   <div class="modal fade" id="modalMetro" tabindex="-1" aria-hidden="true">
@@ -1433,17 +1645,13 @@
             Williams y,
             años más tarde, ese mismo bloque (con dos turbos añadidos) se utilizó para el superdeportivo Jaguar XJ220.
           </p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (410 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 74%;"></div>
           </div>
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 82%;"></div>
           </div>
         </div>
       </div>
@@ -1465,17 +1673,13 @@
           <p><strong>Dato curioso:</strong> El sistema "anti-lag" de su turbo era tan agresivo que escupía llamaradas de
             casi un
             metro por el escape, lo que le valió el apodo de "dragón de los tramos".</p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (350 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 64%;"></div>
           </div>
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 88%;"></div>
           </div>
         </div>
       </div>
@@ -1497,17 +1701,13 @@
           <p><strong>Dato curioso:</strong> Fue diseñado específicamente para el Grupo B desde cero; a diferencia de sus
             rivales, no
             intentaba parecerse a ningún coche de producción masiva de Ford.</p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (450 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 81%;"></div>
           </div>
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 85%;"></div>
           </div>
         </div>
       </div>
@@ -1529,17 +1729,13 @@
           <p><strong>Dato curioso:</strong> Se ganó el apodo de "Rey de África" tras ganar el durísimo Rally Safari de
             Kenia tres años consecutivos
             (1984-1986) gracias a su increíble robustez mecánica.</p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (380 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 69%;"></div>
           </div>
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 75%;"></div>
           </div>
         </div>
       </div>
@@ -1561,17 +1757,13 @@
           <p><strong>Dato curioso:</strong> Era el coche preferido de los pilotos privados porque, al no tener turbo
             (era atmosférico),
             era mucho más fácil de mantener y más fiable en condiciones de calor extremo.</p>
-          <p class="mb-1">Potencia (CV)</p>
+          <p class="mb-1">Potencia (240 CV)</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;" aria-valuenow="85"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 43%;"></div>
           </div>
           <p class="mb-1">Relación Peso/Potencia</p>
           <div class="progress bg-secondary mb-3" style="height: 10px;">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%;" aria-valuenow="95"
-              aria-valuemin="0" aria-valuemax="100">
-            </div>
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 60%;"></div>
           </div>
         </div>
       </div>
