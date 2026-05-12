@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/bNQXsDTP/Chat-GPT-Image-12-may-2026-20-30-18.png">
+    <title>DreamTravel | Tu Agencia Global</title>
+    
+    <!-- Fuentes y CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --color-acogedor: #fdfaf6;
+            --color-primario: #d4a373;
+            --color-texto: #4a4238;
+            --color-acento: #bc6c25;
+            --color-oferta: #e76f51;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+        }
+
+        body { background-color: var(--color-acogedor); color: var(--color-texto); font-family: 'Lato', sans-serif; scroll-behavior: smooth; margin: 0; padding: 0; }
+        h1, h2, h3, .navbar-brand { font-family: 'Playfair Display', serif; color: #2b2620; }
+
+        /* Navbar */
+        .navbar { background-color: rgba(255, 250, 240, 0.9) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212, 163, 115, 0.1); }
+        
+        /* CARRUSEL */
+        .carousel-item { height: 90vh; background-color: #1a1a1a; }
+        .carousel-item img { position: absolute; top: 0; left: 0; min-width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .carousel-caption { 
+            z-index: 10; bottom: 20%; background: var(--glass-bg); backdrop-filter: blur(15px); 
+            padding: 3rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2); max-width: 700px;
+        }
+
+        /* SECCIONES */
+        .continente-header { border-left: 6px solid var(--color-primario); padding-left: 20px; margin: 60px 0 30px; color: var(--color-acento); }
+        
+        /* SOLUCIÓN: TARJETAS DE DESTINO */
+        .destinos-card { 
+            background: white; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
+            margin-bottom: 2rem; transition: 0.4s; border: 1px solid rgba(212, 163, 115, 0.1);
+            overflow: hidden; height: 100%; display: flex; flex-direction: column;
+        }
+        .destinos-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(212, 163, 115, 0.15); }
+        
+        /* SOLUCIÓN AL CORTE DE LETRAS: overflow: visible para el título si es necesario, 
+           pero mejor asegurar que la imagen no tape el texto al escalar */
+        .card-img-container { position: relative; overflow: hidden; z-index: 1; }
+        .img-destino { width: 100%; height: 240px; object-fit: cover; transition: 0.5s ease; }
+        .destinos-card:hover .img-destino { transform: scale(1.1); }
+        
+        /* El cuerpo de la tarjeta tiene un z-index superior para que el texto nunca sea tapado */
+        .card-body-content { 
+            padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; 
+            position: relative; z-index: 2; background: white; 
+        }
+
+        .amenities i { font-size: 1.1rem; color: var(--color-primario); margin-right: 8px; }
+        
+        /* PRECIO */
+        .precio-tag {
+            display: inline-block !important; background-color: #f3e5d8; color: #bc6c25;
+            padding: 6px 18px; border-radius: 50px; font-weight: bold; font-size: 1.1rem;
+            border: 1px solid rgba(188, 108, 37, 0.2); margin-top: 10px;
+        }
+
+        /* ITINERARIO */
+        .itinerary-card { background: white; border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .day-number {
+            width: 40px; height: 40px; background: var(--color-primario); color: white;
+            border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+            font-weight: bold; margin-right: 15px;
+        }
+
+        .epoca-info { font-size: 0.85rem; color: #888; margin-top: 5px; font-style: italic; }
+        .logo{
+            height: 110px;
+            width: auto;
+        }
+    </style>    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="https://i.postimg.cc/bNQXsDTP/Chat-GPT-Image-12-may-2026-20-30-18.png" alt="DreamTravel" class="logo">
+                <span>DreamTravel</span>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="#europa">Europa</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#america">América</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#africa">África</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#asia">Asia</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#itinerario-bali">Itinerarios</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-bold text-accent" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+            </div>
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=2070" alt="Viajes Mundiales">
+                    <div class="container"><div class="carousel-caption text-start">
+                        <h1 class="display-2 fw-bold">El mundo a tus pies</h1>
+                        <p class="lead fs-4">Explora destinos únicos en los 5 continentes diseñados por expertos.</p>
+                        <a class="btn btn-lg btn-primary" href="#europa">Empezar aventura</a>
+                    </div></div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073" alt="Maldivas Oferta">
+                    <div class="container"><div class="carousel-caption">
+                        <div class="badge-flash"><i class="bi bi-lightning-charge"></i> OFERTA EXCLUSIVA</div>
+                        <h1 class="display-3 fw-bold">Pack Vuelo + Hotel</h1>
+                        <p class="lead fs-4">7 días en las Maldivas en Resort de Lujo con vuelos incluidos.</p>
+                        <h3 class="mb-4">Solo 1.299€ <small class="fs-6 text-decoration-line-through">1.800€</small></h3>
+                        <a class="btn btn-lg btn-primary" href="#contacto">Reservar mi plaza</a>
+                    </div></div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2070" alt="Vietnam">
+                    <div class="container"><div class="carousel-caption text-end">
+                        <h1 class="display-3 fw-bold">Viajes de Autor</h1>
+                        <p class="lead fs-4">Grupos reducidos con guía fotógrafo por el Sudeste Asiático.</p>
+                        <p>Una experiencia inmersiva que cambiará tu forma de ver el mundo.</p>
+                        <a class="btn btn-lg btn-light rounded-pill px-5 py-3 fw-bold" href="#itinerario-bali">Ver itinerario</a>
+                    </div></div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070"
+                        class="d-block w-100" style="object-fit: cover; height: 100vh; filter: brightness(0.6);"
+                        alt="Bali y Tailandia">
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1 class="display-3">Exotismo Asiático</h1>
+                            <p>Descubre la magia de Bali, Tokio y las playas de Tailandia con nuestros guías locales.</p>
+                            <p><a class="btn btn-lg btn-primary shadow" href="#destinos-asia">Viajar a Asia</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <div class="container py-5">
+            
+            <!-- EUROPA (Tus destinos recuperados) -->
+            <h2 class="continente-header" id="europa">Europa</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400" class="img-destino">
+                        <h3>París</h3>
+                        <div class="amenities mb-3"><i class="bi bi-geo-alt"></i><i class="bi bi-cup-hot"></i></div>
+                        <p class="small text-muted">"Cena romántica frente a la Torre Eiffel". No olvides añadir: Paseo por Montmartre y crucero nocturno por el Sena.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Primavera / Otoño</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.450€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400" class="img-destino">
+                        <h3>Roma</h3>
+                        <div class="amenities mb-3"><i class="bi bi-camera"></i><i class="bi bi-bicycle"></i></div>
+                        <p class="small text-muted">"Tour por el Coliseo y Trastevere". Sugerencia: Explora los tesoros del Vaticano y lanza una moneda en la Fontana di Trevi.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Abril a Junio</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">380€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=400" class="img-destino">
+                        <h3>Suiza</h3>
+                        <div class="amenities mb-3"><i class="bi bi-snow"></i><i class="bi bi-train-front"></i></div>
+                        <p class="small text-muted">"Paisajes alpinos y los mejores chocolates". Sugerencia: Sube al tren cremallera de Jungfraujoch y navega por el Lago de Lucerna.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Todo el año</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">590€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400" class="img-destino">
+                        <h3>Dolomitas</h3>
+                        <div class="amenities mb-3"><i class="bi bi-mountain"></i><i class="bi bi-heart"></i></div>
+                        <p class="small text-muted">"Naturaleza pura en los Alpes italianos". Sugerencia: Trekking en las Tre Cime di Lavaredo y atardeceres de fuego en las cumbres.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Junio a Septiembre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">520€</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AMÉRICA -->
+            <h2 class="continente-header" id="america">América</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="destinos-card">
+                        <img src="https://www.guiaenturismo.com/wp-content/uploads/2025/06/Consejos-para-viajar-a-la-costa-oeste-EEUU.jpg" class="img-destino">
+                        <h3>Oeste de EE.UU.</h3>
+                        <p class="small text-muted">Desde la bahía de San Francisco hasta las mismí simas luces de las Vegas</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Mayo y Diciembre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.200€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="destinos-card">
+                        <img src="https://boomers-daily.com/wp-content/uploads/2021/03/city-views-los-angeles-california-video-march-25-2021.jpg" class="img-destino">
+                        <h3>California</h3>
+                        <p class="small text-muted">Un estado que lo tiene todo: desde playas icónicas y desiertos hasta bosques de secuoyas gigantes.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Mayo a Octubre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.450€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="destinos-card">
+                        <img src="https://i.pinimg.com/736x/7e/ef/95/7eef956b69e744cca26bde2e59398a08.jpg" class="img-destino">
+                        <h3>Nueva York</h3>
+                        <p class="small text-muted">"La ciudad que nunca duerme". Sugerencia: Paseo por Central Park, vistas desde el Empire State y musicales en Broadway.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Mayo y Diciembre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">950€</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÁFRICA & ISLAS -->
+            <h2 class="continente-header" id="africa">África & Islas</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://blog.thbhotels.com/wp-content/uploads/2018/02/29101617_xxl.jpg" class="img-destino">
+                        <h3>Lanzarote</h3>
+                        <p class="small text-muted">El paraíso volcánico español.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: de abril a junio y de septiembre a octubre.</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">399€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://t3.ftcdn.net/jpg/02/31/14/10/360_F_231141068_W27YkU6dMSP1ImkYNRCc5G2XNDgnGnAc.jpg" class="img-destino">
+                        <h3>Marruecos</h3>
+                        <p class="small text-muted">Una explosión de colores, aromas y tradiciones a las puertas de Europa.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Primavera y Otoño</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">600€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800" class="img-destino">
+                        <h3>Kenia Safari</h3>
+                        <p class="small text-muted">Aventura salvaje en la sabana.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: temporada seca, de julio a octubre, y de enero a marzo</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.800€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://wallpaper.forfun.com/fetch/a1/a1f9ace6fbe8e3aa5981887455955096.jpeg" class="img-destino">
+                        <h3>Egypto</h3>
+                        <p class="small text-muted">Conviertete en arqueólogo por unos días y adentrate en su cultura ancestral</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: el invierno y la primavera/otoño, específicamente de octubre a abril.</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.500€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://media.istockphoto.com/id/804840958/es/foto/barcos-en-la-playa-de-ramena-madagascar-islas-de-%C3%A1frica-oriental-%C3%A1frica.jpg?s=612x612&w=0&k=20&c=7lxbWgLEqhjTOu9glVg7dzcyKMviRifBzfC1F4J0W7g=" class="img-destino">
+                        <h3>Madagascar</h3>
+                        <p class="small text-muted">Un continente en miniatura donde el 90% de la fauna no existe en ningún otro lugar del planeta.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Abril a Noviembre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.950€</span>
+                        </p>
+                    </div>
+                </div>                
+            </div>
+
+            <!-- ASIA -->
+            <h2 class="continente-header" id="asia">Asia</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" class="img-destino">
+                        <h3>Kioto, Japón</h3>
+                        <p class="small text-muted">"Tradición, templos y paz". Sugerencia: Ceremonia del té, el Pabellón Dorado y el místico bosque de bambú de Arashiyama</p>
+                        <p class="small text-muted mb-0"><i class="bi bi-calendar-check"></i> Mejor época: Marzo a Mayo</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.600€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" class="img-destino">
+                        <h3>Tokyo, Japón</h3>
+                        <p class="small text-muted">Una megaciudad donde los rascacielos de neón conviven en armonía con santuarios milenarios.</p>
+                        <p class="small text-muted mb-0"><i class="bi bi-calendar-check"></i> Mejor época: Marzo a Mayo</p>
+                        <p class="text-center mt-2">
+                            <span class="precio-tag">1.250€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800" class="img-destino">
+                        <h3>Vietnam</h3>
+                        <p class="small text-muted">"Bahía de Ha Long e historia milenaria". Sugerencia: Noche en un junco tradicional y tour gastronómico por las calles de Hanói.</p>
+                        <p class="small text-muted mb-0"><i class="bi bi-calendar-check"></i> Mejor época: primavera (marzo-abril) y el otoño (octubre-noviembre)</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.350€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://st2.depositphotos.com/1037168/5190/i/450/depositphotos_51904861-stock-photo-beautiful-above-and-underwater-landscape.jpg" class="img-destino">
+                        <h3>Bali</h3>
+                        <p class="small text-muted">Un paraíso tropical famoso por sus arrozales infinitos, templos antiguos y cultura espiritual.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Mayo a Septiembre</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.150€</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="destinos-card">
+                        <img src="https://img.magnific.com/free-photo/landmark-pagoda-doi-inthanon-national-park-chiang-mai-thailand_335224-779.jpg?semt=ais_hybrid&w=740&q=80" class="img-destino">
+                        <h3>Tailandia</h3>
+                        <p class="small text-muted">Desde la energía de Bangkok hasta la paz de sus islas, Tailandia es un viaje para todos los sentidos.</p>
+                        <p class="epoca-info"><i class="bi bi-calendar-event"></i> Mejor época: Noviembre a Febrero</p>
+                        <p class="text-center mt-3">
+                            <span class="precio-tag">1.050€</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACTO Y MAPA -->
+        
+        <div class="container py-5" id="itinerario-bali">
+            <div class="itinerary-card p-5 shadow-sm border-0">
+                <h2 class="display-5 fw-bold text-accent mb-5 text-center">
+                    <i class="bi bi-calendar3"></i> Itinerario: Magia en Bali (7 Días)
+                </h2>
+                <div class="row g-5">
+                    <div class="col-md-6">
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">1</span>
+                            <div>
+                                <h5 class="fw-bold">Llegada a Ubud</h5>
+                                <p class="text-muted">Traslado al corazón cultural de Bali y cena de bienvenida.</p>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">2</span>
+                            <div>
+                                <h5 class="fw-bold">Arrozales y Templos</h5>
+                                <p class="text-muted">Tour por Tegalalang y purificación en Tirta Empul.</p>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">3</span>
+                            <div>
+                                <h5 class="fw-bold">Bosque de Monos</h5>
+                                <p class="text-muted">Visita al santuario de monos y mercado de Ubud.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">4</span>
+                            <div>
+                                <h5 class="fw-bold">Uluwatu Cliff</h5>
+                                <p class="text-muted">Atardecer en el templo sobre el acantilado y danza Kecak.</p>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">5</span>
+                            <div>
+                                <h5 class="fw-bold">Nusa Penida</h5>
+                                <p class="text-muted">Excursión en barco para ver la famosa Kelingking Beach.</p>
+                            </div>
+                        </div>
+                        <div class="mb-4 d-flex align-items-start">
+                            <span class="day-number">6</span>
+                            <div>
+                                <h5 class="fw-bold">Relax & Spa</h5>
+                                <p class="text-muted">Día libre para masajes balineses y relax en la playa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 p-4 bg-white rounded-4 border border-warning-subtle text-center">
+                    <p class="mb-0 fw-bold"><i class="bi bi-info-circle me-2"></i> Incluye Hoteles 5*, Guía privado, Traslados y Desayunos.</p>
+                </div>
+            </div>
+            <div class="container py-5 border-top" id="contacto">
+                <div class="row g-5 align-items-center">
+                    <div class="col-md-5">
+                        <h2 class="display-5 mb-4">¿Planeamos tu viaje?</h2>
+                        <p class="mb-4">Envíanos un mensaje y te daremos un presupuesto personalizado sin compromiso.</p>
+                        <form>
+                            <input type="text" class="form-control mb-3" placeholder="Nombre completo">
+                            <input type="email" class="form-control mb-3" placeholder="Correo electrónico">
+                            <textarea class="form-control mb-4" rows="4" placeholder="¿Qué destino tienes en mente?"></textarea>
+                            <button class="btn btn-primary w-100 shadow-lg">Solicitar presupuesto gratuito</button>
+                        </form>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194348.1398103328!2d-3.8196192!3d40.4127347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="container py-5 text-center text-muted">
+            <p>© 2026 DreamTravel Agency · Viaja con el corazón.</p>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Asegúrate de que el ID sea #heroCarousel
+        const myCarouselElement = document.querySelector('#heroCarousel')
+        
+        // Usamos la clase Carousel de Bootstrap
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+            interval: 3000,
+            touch: true,
+            ride: 'carousel'
+        })
+    </script>
+</body>
+</html>
