@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Blog dedicado a los amantes de la restauración, historia y mitos del motor clásico.">
+    <meta name="author" content="ClassicGears">
+    <title>ClassicGears | El rincón del coche clásico</title>
+
+    <!-- Fuentes y CDN de Bootstrap Oficiales -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --color-fondo: #fbf9f6;
+            --color-texto: #332c25;
+            --color-detalles: #bc6c25;
+            --color-oscuro: #1a1510;
+            --color-tarjeta: #ffffff;
+            --color-vintage-red: #ae2012;
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            font-family: 'Lato', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .blog-header-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--color-oscuro);
+        }
+
+        a {
+            color: var(--color-detalles);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            color: var(--color-oscuro);
+        }
+
+        .btn-outline-custom {
+            border-color: var(--color-detalles);
+            color: var(--color-detalles);
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--color-detalles);
+            color: #fff;
+            border-color: var(--color-detalles);
+        }
+
+        .btn-custom {
+            background-color: var(--color-detalles);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--color-oscuro);
+            color: #fff;
+        }
+
+        /* Cabecera */
+        .blog-header-logo {
+            font-size: 2.25rem;
+            letter-spacing: -1px;
+        }
+
+        .nav-scroller .nav-link {
+            font-weight: 700;
+            color: var(--color-texto);
+        }
+
+        .nav-scroller .nav-link.active,
+        .nav-scroller .nav-link:hover {
+            color: var(--color-detalles) !important;
+        }
+
+        /* Caja destacada */
+        .featured-box {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://static0.hotcarsimages.com/wordpress/wp-content/uploads/2023/07/velocity-signature-ford-mustang-jpg.jpg?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: #fff !important;
+            border-radius: 24px !important;
+            padding: 5rem 3rem !important;
+        }
+
+        .featured-box h1,
+        .featured-box p {
+            color: #fff !important;
+        }
+
+        /* Tarjetas de posts generales */
+        .post-card {
+            background-color: var(--color-tarjeta);
+            border: 1px solid rgba(188, 108, 37, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+            transition: 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(188, 108, 37, 0.08);
+        }
+
+        .card-img-side {
+            width: 200px;
+            object-fit: cover;
+        }
+
+        /* Widgets laterales */
+        .sidebar-box {
+            background-color: #f3ede4;
+            border-radius: 16px;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* COMPONENTE INTERACTIVO MAQUETADO SIN SOLAPAMIENTOS RENTABLES  */
+        /* ------------------------------------------------------------- */
+        .interactive-section {
+            background-color: #ffffff;
+            border-radius: 24px;
+            border: 1px solid rgba(188, 108, 37, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
+        }
+
+        .interactive-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            /* Cambia hidden por visible para que las tarjetas no se corten */
+            overflow: visible; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .interactive-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Añade esta línea para mantener las esquinas redondeadas de la imagen */
+            border-radius: 20px; 
+        }
+
+        /* Hotspots */
+        .hotspot-pin {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background-color: var(--color-vintage-red);
+            color: #fff;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .hotspot-pin:hover {
+            transform: scale(1.25);
+            background-color: var(--color-detalles);
+            z-index: 99;
+        }
+
+        /* Tooltips nativos usando CSS puro sin romper diseño */
+        .hotspot-pin .hotspot-card {
+            visibility: hidden;
+            opacity: 0;
+            width: 260px;
+            background-color: rgba(26, 21, 16, 0.98);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            position: absolute;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            pointer-events: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .hotspot-pin .hotspot-card::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(26, 21, 16, 0.98) transparent transparent transparent;
+        }
+
+        .hotspot-pin:hover .hotspot-card {
+            visibility: visible;
+            opacity: 1;
+            /* Asegura que la tarjeta flote por encima de todo el contenido adyacente */
+            z-index: 999; 
+        }
+        /* Tarjeta de Coleccionista Refinada */
+        .collector-card-clean {
+            background: #ffffff;
+            border: 1px solid #eedecc;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(188, 108, 37, 0.06);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .collector-card-clean .card-topbar {
+            background-color: var(--color-oscuro);
+            color: #ffffff;
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collector-card-clean .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-bottom: 1px dashed #f0e6dc;
+            font-size: 0.9rem;
+        }
+
+        .collector-card-clean .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Barra de viajes */
+        .roadtrip-footer-bar {
+            background-color: #fbf9f6;
+            border: 1px solid rgba(188, 108, 37, 0.1);
+            border-radius: 14px;
+            padding: 12px 20px;
+        }
+
+        /* Podcast Widget */
+        .podcast-player {
+            background: linear-gradient(135deg, #2b2620, #1a1510);
+            color: #fff;
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+        .podcast-btn {
+            background-color: var(--color-detalles);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .podcast-btn:hover {
+            transform: scale(1.05);
+            background-color: #fff;
+            color: var(--color-detalles);
+        }
+
+        .auction-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .btn-back-to-top {
+            background-color: #1a1510 !important;
+            color: #ffffff !important;
+            border: 2px solid #bc6c25 !important;
+            padding: 16px 44px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            font-size: 1.15rem !important;
+            letter-spacing: 2px !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+            display: inline-block !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+            text-decoration: none !important;
+        }
+
+        .btn-back-to-top:hover {
+            background-color: #bc6c25 !important;
+            color: #ffffff !important;
+            transform: translateY(-4px) !important;
+            box-shadow: 0 10px 25px rgba(188, 108, 37, 0.5) !important;
+        }
+    </style>
+</head>
+
+<body id="top-of-page">
+
+    <div class="container">
+        <!-- HEADER -->
+        <header class="border-bottom lh-1 py-4">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                    <a class="link-secondary small" href="#"><i class="bi bi-mailbox"></i> Newsletter</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">ClassicGears</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-custom rounded-pill px-3" href="#"><i
+                            class="bi bi-shield-check"></i> Mi Garaje Premium</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- CATEGORÍAS -->
+        <div class="nav-scroller py-1 mb-4 border-bottom">
+            <nav class="nav nav-underline justify-content-between">
+                <a class="nav-item nav-link active" href="#">Inicio</a>
+                <a class="nav-item nav-link" href="#">Restauraciones</a>
+                <a class="nav-item nav-link" href="#">American Muscle</a>
+                <a class="nav-item nav-link" href="#">Clásicos Europeos</a>
+                <a class="nav-item nav-link" href="#">Eventos y Rallies</a>
+                <a class="nav-item nav-link" href="#">Guías de Compra</a>
+                <a class="nav-item nav-link" href="#">Mecánica Vintage</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mt-4">
+
+        <!-- POST DESTACADO PRINCIPAL -->
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis featured-box">
+            <div class="col-lg-7 px-0">
+                <span class="badge mb-2" style="background-color: var(--color-detalles);">Mitos del Motor</span>
+                <h1 class="display-4 fst-italic">El renacer del Mustang Fastback de 1967</h1>
+                <p class="lead my-3">Acompañamos al taller 'RetroMotors' en el desmontaje y restauración completa de una
+                    joya americana abandonada en un granero durante tres décadas. Óxido, caballos de fuerza y pura
+                    nostalgia.</p>
+                <p class="lead mb-0"><a
+                        href="https://tiempodeclasicos.over-blog.es/article-ford-mustang-1967-91424894.html"
+                        class="text-white fw-bold link-underline-light">Leer reportaje completo...</a></p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE LA FOTO REAL DEL SEAT 124 ADAPTADA E INTERACTIVA (CORREGIDA SIN CORRUPCIÓN DE DISEÑO) -->
+        <div class="my-5">
+            <div class="interactive-section">
+                <div class="row">
+                    <div class="col-12 col-xl-8">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-camera-reels fs-4 text-accent"></i>
+                            <h3 class="fst-italic mb-0">Inspector de Joyas Históricas</h3>
+                        </div>
+                        <p class="text-muted small mb-4">Pasa el cursor por encima de los puntos interactivos del
+                            legendario <strong>SEAT 124 FL-80 de Rallyes</strong> real para revelar los secretos
+                            mecánicos de esta bestia de tramos invernales.</p>
+
+                        <!-- Contenedor con la imagen correcta del SEAT naranja en la nieve -->
+                        <div class="interactive-image-wrapper mb-4">
+                            <!-- Imagen real de los tramos nevados recuperada perfectamente -->
+                            <img src="https://periodismodelmotor.com/seat-124-especial-1800-gr4/214710/seat-124-especial-1800-gr4-3/"
+                                onerror="this.src='https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=1200'"
+                                alt="Seat 124 Sport Competición en Nieve">
+
+                            <!-- Hotspot 1: Luces Cibié -->
+                            <div class="hotspot-pin" style="top: 66%; left: 33%;">
+                                <i class="bi bi-eye"></i>
+                                <div class="hotspot-card">
+                                    <strong class="text-warning">Faros Cibié Super Oscar</strong><br>
+                                    Luces supletorias bifaro indispensables para mantener medias de velocidad altas en
+                                    tramos nocturnos cerrados.
+                                </div>
+                            </div>
+
+                            <!-- Hotspot 2: Motor Biárbol -->
+                            <div class="hotspot-pin" style="top: 55%; left: 48%;">
+                                <i class="bi bi-cpu"></i>
+                                <div class="hotspot-card">
+                                    <strong class="text-warning">Motor Lampredi 1800</strong><br>
+                                    Bloque mítico de doble árbol de levas en cabeza con carburación directa Weber.
+                                    Rendimiento radical de tracción trasera.
+                                </div>
+                            </div>
+
+                            <!-- Hotspot 3: Matrícula Histórica -->
+                            <div class="hotspot-pin" style="top: 76%; left: 41%;">
+                                <i class="bi bi-hash"></i>
+                                <div class="hotspot-card">
+                                    <strong class="text-warning">Placa B-6013-B</strong><br>
+                                    Matriculación histórica original con pasaporte FIA y ficha técnica homologada para
+                                    regularidad sport.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de ruta limpia y funcional -->
+                        <div
+                            class="roadtrip-footer-bar d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-map-fill text-danger fs-5"></i>
+                                <span class="small fw-bold text-dark">Ruta: Rally de Invierno Histórico</span>
+                            </div>
+                            <div class="btn-group btn-group-sm shadow-sm" role="group">
+                                <button type="button" class="btn btn-white border"><i class="bi bi-compass"></i>
+                                    Guía</button>
+                                <button type="button" class="btn btn-white border"><i class="bi bi-camera"></i>
+                                    Fotos</button>
+                                <button type="button" class="btn btn-white border"><i class="bi bi-cup-hot"></i>
+                                    Paradas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ficha de Coleccionista Independiente a la derecha -->
+                    <div class="col-12 col-xl-4 mt-4 mt-xl-0">
+                        <div class="collector-card-clean">
+                            <div class="card-topbar">
+                                <span>Collector's Card #18</span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <div class="p-4 text-center bg-light border-bottom">
+                                <div class="mb-2"><i class="bi bi-car-front text-muted display-5"></i></div>
+                                <h4 class="fw-bold mb-1">SEAT 124 FL-80</h4>
+                                <span class="badge bg-warning text-dark font-monospace px-3 rounded-pill">EDICIÓN
+                                    LIMITADA</span>
+                            </div>
+                            <div class="p-2">
+                                <div class="stat-item"><strong>Vel. Máxima:</strong> <span class="text-muted">185
+                                        km/h</span></div>
+                                <div class="stat-item"><strong>Aceleración:</strong> <span class="text-muted">0-100 en
+                                        9.4s</span></div>
+                                <div class="stat-item"><strong>Motos/Clas:</strong> <span class="text-muted">Biarbol /
+                                        Rallies</span></div>
+                                <div class="stat-item"><strong>Rareza:</strong> <span
+                                        class="text-success fw-bold">Mítico</span></div>
+                            </div>
+                            <div class="p-4 bg-light text-center fst-italic small border-top text-muted">
+                                "El sonido de su motor biárbol subiendo de vueltas en la nieve es una auténtica sinfonía
+                                mecánica de los años setenta."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POSTS GEMELOS SECUNDARIOS -->
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row g-0 post-card flex-md-row mb-4 h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success"><i class="bi bi-tools"></i> Guías
+                            Técnicas</strong>
+                        <h3 class="mb-0 fs-4">Puesta a punto de carburadores</h3>
+                        <div class="mb-1 text-body-secondary small">15 de Mayo, 2026</div>
+                        <p class="card-text mb-auto small text-muted">Trucos mecánicos esenciales para regular la mezcla
+                            de aire y gasolina en motores Weber bicilindro sin volverte loco.</p>
+                        <a href="https://es.scribd.com/document/175569758/Carburador-Tabla-Reglajes"
+                            class="stretched-link icon-link gap-1">Reglajes estándar <i
+                                class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/45DCOE9-1.JPG"
+                            class="card-img-side h-100" alt="Motor clásico">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row g-0 post-card flex-md-row mb-4 h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary"><i class="bi bi-currency-dollar"></i>
+                            Mercado</strong>
+                        <h3 class="mb-0 fs-4">Clásicos que subirán de precio</h3>
+                        <div class="mb-1 text-body-secondary small">12 de Mayo, 2026</div>
+                        <p class="mb-auto small text-muted">Analizamos las tendencias en subastas europeas: qué modelos
+                            de los años 80 y 90 son las mejores inversiones hoy.</p>
+                        <a href="https://www.classic-trader.com/es/coches"
+                            class="stretched-link icon-link gap-1">Acceder al mercado <i
+                                class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=400"
+                            class="card-img-side h-100" alt="Coche clásico">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-5 mt-2">
+            <!-- COLUMNA PRINCIPAL DE ARTÍCULOS -->
+            <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom"><i class="bi bi-journal-text"></i> Crónicas del Asfalto
+                </h3>
+
+                <article class="blog-post mb-5">
+                    <h2 class="display-5 mb-2">Porsche 911: La evolución de los motores refrigerados por aire</h2>
+                    <p class="text-muted small">1 de Mayo, 2026 por <a href="#">Carlos Sanz</a></p>
+                    <p>Hablar del Porsche 911 clásico es hablar del "Aircooled". Desde el nacimiento del modelo original
+                        en los sesenta hasta el fin de la era con el espectacular chasis 993 en los noventa, la
+                        refrigeración por aire marcó el sonido, el comportamiento y el alma de Stuttgart.</p>
+
+                    <!-- NUEVA SECCIÓN DE PORSCHE INTERACTIVA Y CHULA (TAMAÑO GRANDE E IMPECABLE) -->
+                    <div class="interactive-section my-4">
+                        <div class="row">
+                            <div class="col-12 col-xl-8">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="bi bi-sliders fs-4 text-accent"></i>
+                                    <h4 class="fst-italic mb-0">Análisis Técnico: Porsche 911 Carrera 3.2</h4>
+                                </div>
+                                <p class="text-muted small mb-3">Explora los puntos clave que convirtieron al 911
+                                    "Aircooled" en una obra maestra de la ingeniería alemana independiente.</p>
+
+                                <div class="interactive-image-wrapper mb-3">
+                                    <!-- Imagen espectacular en HD de un Porsche 911 clásico -->
+                                    <img src="https://pueche.com/wp-content/files_mf/1725351971IMG_1744.JPG"
+                                        alt="Porsche 911 Clásico Aircooled">
+
+                                    <!-- Hotspot 1: Llantas Fuchs -->
+                                    <div class="hotspot-pin" style="top: 72%; left: 28%;">
+                                        <i class="bi bi-circle-square"></i>
+                                        <div class="hotspot-card">
+                                            <strong class="text-warning">Llantas Fuchs Originales</strong><br>
+                                            Forjadas en una sola pieza de aluminio. Reducían el peso no suspendido y
+                                            optimizaban la refrigeración de los frenos en circuito.
+                                        </div>
+                                    </div>
+
+                                    <!-- Hotspot 2: Motor Bóxer Trasero -->
+                                    <div class="hotspot-pin" style="top: 58%; left: 82%;">
+                                        <i class="bi bi-fire"></i>
+                                        <div class="hotspot-card">
+                                            <strong class="text-warning">6 Cilindros Bóxer (Aircooled)</strong><br>
+                                            Ubicado colgado por detrás del eje trasero. Sin radiador de agua, dependía
+                                            enteramente de su icónico ventilador superior de 11 aspas.
+                                        </div>
+                                    </div>
+
+                                    <!-- Hotspot 3: Silueta Aerodinámica -->
+                                    <div class="hotspot-pin" style="top: 42%; left: 50%;">
+                                        <i class="bi bi-wind"></i>
+                                        <div class="hotspot-card">
+                                            <strong class="text-warning">Línea Flyline Inconfundible</strong><br>
+                                            Una silueta icónica que apenas varió en 30 años, diseñada para cortar el
+                                            viento y canalizar el aire directo hacia la zaga del motor.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-xl-4 mt-3 mt-xl-0">
+                                <div class="collector-card-clean">
+                                    <div class="card-topbar" style="background-color: #ae2012;">
+                                        <span>Ficha de Stuttgart #911</span>
+                                        <i class="bi bi-lightning-charge-fill text-warning"></i>
+                                    </div>
+                                    <div class="p-3 text-center bg-light border-bottom">
+                                        <div class="mb-2"><i class="bi bi-speedometer2 text-danger display-6"></i></div>
+                                        <h5 class="fw-bold mb-1">911 Carrera 3.2</h5>
+                                        <span class="badge bg-dark px-3 rounded-pill">MÁXIMA PUREZA</span>
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="stat-item"><strong>Arquitectura:</strong> <span
+                                                class="text-muted">Bóxer 6 cil.</span></div>
+                                        <div class="stat-item"><strong>Potencia:</strong> <span class="text-muted">231
+                                                CV</span></div>
+                                        <div class="stat-item"><strong>Refrigeración:</strong> <span
+                                                class="text-muted">Aire / Aceite</span></div>
+                                        <div class="stat-item"><strong>Valoración:</strong> <span
+                                                class="text-success fw-bold">Al alza 📈</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <p>Para los puristas, un verdadero 911 no lleva anticongelante. En este artículo desglosamos las
+                        diferencias dinámicas entre los motores de bloque 2.7 de los setenta frente a los robustos 3.2
+                        de los ochenta, considerados los motores más indestructibles de la firma alemana.</p>
+
+                    <blockquote>
+                        <p class="fst-italic border-start border-4 border-warning ps-3 my-4">"El sonido de un seis
+                            cilindros bóxer refrigerado por aire subiendo a 6.000 vueltas es una sinfonía metálica que
+                            ningún motor moderno con radiador puede replicar."</p>
+                    </blockquote>
+                </article>
+            </div>
+
+            <!-- COLUMNA LATERAL (SIDEBAR) -->
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+
+                    <!-- PODCAST WIDGET -->
+                    <div class="podcast-player mb-4 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-danger text-white"><i class="bi bi-radioactive"></i> EN DIRECTO</span>
+                            <small class="text-white-50">Radio ClassicGears</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <button class="podcast-btn"><i class="bi bi-play-fill fs-5"></i></button>
+                            <div>
+                                <h6 class="mb-0 small fw-bold">Ep. 41: ¿Merece la pena matricular como histórico?</h6>
+                                <small class="text-white-50" style="font-size:0.75rem;">Duración: 45 min · Manolo &
+                                    Carlos</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MONITOR DE SUBASTAS -->
+                    <div class="p-4 mb-4 sidebar-box">
+                        <h5 class="fst-italic fw-bold mb-3"><i class="bi bi-graph-up-arrow"></i> Auction Watch</h5>
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary-subtle">
+                            <span class="small fw-bold">Alfa Romeo GT Veloce</span>
+                            <span class="badge bg-success auction-badge">32.500 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="small fw-bold">BMW M3 E30 (1988)</span>
+                            <span class="badge bg-danger auction-badge">67.000 €</span>
+                        </div>
+                    </div>
+
+                    <!-- GALERÍA DE LOS BOXES FOTOS -->
+                    <div class="p-4 mb-3 sidebar-box">
+                        <h5 class="fst-italic fw-bold mb-3"><i class="bi bi-images"></i> Fotos de los Boxes</h5>
+                        <div class="row g-2">
+                            <div class="col-4"><img
+                                    src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=150"
+                                    class="img-fluid rounded" alt="car"></div>
+                            <div class="col-4"><img
+                                    src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=150"
+                                    class="img-fluid rounded" alt="car"></div>
+                            <div class="col-4"><img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/45DCOE9-1.JPG"
+                                    class="img-fluid rounded" alt="car"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <footer class="py-5 text-center text-body-secondary bg-dark text-white mt-5">
+        <div class="container">
+            <div class="mb-4">
+                <a href="#top-of-page" class="btn btn-back-to-top">
+                    <i class="bi bi-arrow-up-circle-fill me-2"></i> volver al inicio
+                </a>
+            </div>
+            <hr class="border-secondary my-4">
+            <p class="text-white-50 mb-0">ClassicGears &copy; 2026 - Conservando la cultura del pistón.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
