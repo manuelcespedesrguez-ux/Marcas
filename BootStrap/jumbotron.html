@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La Cofradía del Destilado · Elixires de Antaño</title>
+
+    <link rel="icon" type="image/png"
+        href="https://logoeps.com/wp-content/uploads/2013/07/alcoholicos-anonimos-vector-logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Cormorant+Garamond:ital,wght=0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080604 !important;
+            color: #f1ebd9 !important;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .navbar-brand,
+        .modal-title {
+            font-family: 'Cinzel', serif !important;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: none !important;
+        }
+
+        a,
+        a:hover,
+        a:visited,
+        a:active {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        .navbar {
+            background-color: rgba(8, 6, 4, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .navbar-logo {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0px 0px 4px rgba(212, 175, 55, 0.6));
+        }
+
+        .navbar-nav .nav-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* 👑 JUMBOTRON: Mbappé Medieval */
+        .jumbotron-premium {
+            background: linear-gradient(rgba(8, 6, 4, 0.72), rgba(22, 14, 6, 0.92)),
+                url('https://i.postimg.cc/kXrxtg4G/mpape.png') no-repeat center 20%;
+            background-size: cover;
+            border: 2px solid rgba(212, 175, 55, 0.4) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 100px rgba(212, 175, 55, 0.15);
+        }
+
+        .text-gold {
+            color: #dfb634 !important;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
+        }
+
+        .btn-gold {
+            background-color: #dfb634 !important;
+            border-color: #c9a023 !important;
+            color: #110b05 !important;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+        }
+
+        .btn-gold:hover {
+            background-color: #f3cf65 !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .custom-card {
+            background-color: #130f0a !important;
+            border: 1px solid rgba(212, 175, 55, 0.2) !important;
+            transition: all 0.3s ease;
+        }
+
+        .custom-card:hover {
+            border-color: rgba(212, 175, 55, 0.5) !important;
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .btn-outline-gold {
+            color: #dfb634 !important;
+            border-color: #dfb634 !important;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: #dfb634 !important;
+            color: #110b05 !important;
+        }
+
+        /* 📜 NUEVO: EFECTO PERGAMINO REAL EN LOS MODALES 📜 */
+        .modal-content-medieval {
+            background: linear-gradient(135deg, #e6d5b8 0%, #d4bf9c 50%, #c2aa80 100%) !important;
+            color: #2b1d0c !important;
+            /* Texto oscuro sobre papel claro */
+            border: none !important;
+            border-left: 12px solid #5a3e1a !important;
+            /* Simula el rodillo de madera izquierdo */
+            border-right: 12px solid #5a3e1a !important;
+            /* Simula el rodillo de madera derecho */
+            border-radius: 4px !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9),
+                inset 0 0 40px rgba(90, 62, 26, 0.4),
+                0 0 0 2px #dfb634;
+            padding: 10px;
+        }
+
+        .modal-header-medieval {
+            border-bottom: 2px dashed rgba(90, 62, 26, 0.3) !important;
+            padding-bottom: 10px;
+        }
+
+        .modal-footer-medieval {
+            border-top: 2px dashed rgba(90, 62, 26, 0.3) !important;
+            padding-top: 15px;
+        }
+
+        .modal-gold-title {
+            color: #4a3114 !important;
+            font-weight: 800;
+            text-shadow: none !important;
+        }
+
+        /* Botón de cerrar adaptado para el pergamino claro */
+        .modal-content-medieval .btn-close-white {
+            filter: invert(1) contrast(2);
+        }
+
+        /* Tablas integradas en el pergamino */
+        .table-medieval {
+            color: #2b1d0c !important;
+        }
+
+        .table-medieval th {
+            color: #5a3e1a !important;
+            border-bottom: 2px solid #5a3e1a !important;
+            font-family: 'Cinzel', serif;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            --bs-table-bg-type: rgba(90, 62, 26, 0.06) !important;
+        }
+
+        /* Selectores de pergamino interno */
+        .select-medieval {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            border: 2px solid #5a3e1a !important;
+            color: #2b1d0c !important;
+            font-weight: bold;
+        }
+
+        .select-medieval:focus {
+            box-shadow: 0 0 8px rgba(90, 62, 26, 0.4) !important;
+            border-color: #4a3114 !important;
+        }
+
+        /* Grimorio */
+        .pocion-interactive-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pocion-interactive-box:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: #dfb634;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .cartel-medieval {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            background: #dfb634;
+            color: #110b05;
+            padding: 3px 12px;
+            font-weight: bold;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        /* 🎨 NUEVO: FILTRO "ÓLEO ANTIGUO" PARA LAS IMÁGENES DE SERVIDOR 🎨 */
+        .imagen-modal-medieval {
+            width: 100%;
+            max-width: 290px;
+            height: auto;
+            border: 4px double #4a3114;
+            /* Doble marco clásico */
+            border-radius: 2px;
+            /* Mix de filtros: sutil sepia, contraste reforzado y textura cálida */
+            filter: sepia(0.2) contrast(1.15) brightness(0.95);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            margin-bottom: 15px;
+            animation: fadeInEpic 0.6s ease forwards;
+        }
+
+        @keyframes fadeInEpic {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://logoeps.com/wp-content/uploads/2013/07/alcoholicos-anonimos-vector-logo.png"
+                    alt="Heráldica" class="navbar-logo me-2">
+                <span class="fw-bold text-gold">La Cofradía del Destilado</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-gold" href="#">Tributo de Honor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#alquimia-seccion">Alquimia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#grimorio-seccion">Grimorio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+
+            <div class="p-5 mb-5 jumbotron-premium rounded-3 position-relative overflow-hidden">
+                <div class="container-fluid py-5 my-3 position-relative z-1">
+                    <span class="badge bg-dark text-gold border border-warning mb-3 text-uppercase fw-bold px-3 py-2"
+                        style="font-family: 'Cinzel', serif; letter-spacing: 1px;">
+                        ⚔️ Gran Ofrenda del Reino ⚔️
+                    </span>
+                    <h1 class="display-3 fw-bold text-gold mb-3">Whisky: El Agua de la Vida</h1>
+                    <p class="col-md-9 fs-4 lh-base"
+                        style="color: #f6ebd4; font-weight: 400; font-style: italic; text-shadow: 2px 2px 8px rgba(0,0,0,0.95);">
+                        Dorado elíxir, noble y eterno, engendrado en el seno del roble. Rendimos pleitesía al soberano
+                        de las tabernas: desde los brebajes ahumados por la turba de las lejanas islas escocesas, hasta
+                        la dulzura sagrada del bourbon de ultramar. Licor que no ha de beberse con ligereza, sino con el
+                        respeto que se le debe a un rey.
+                    </p>
+                    <div class="mt-4">
+                        <button class="btn btn-gold btn-lg px-5 py-3 shadow-lg" type="button" data-bs-toggle="modal"
+                            data-bs-target="#modalWhisky">
+                            Descorchar la Reserva Real
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch" id="alquimia-seccion">
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 p-5 custom-card rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fs-1 mb-2">🧪</div>
+                            <h2 class="fw-bold mb-3 text-gold">Alquimia & Espirituosos</h2>
+                            <p class="fs-5" style="color: #bfae96 !important; font-weight: 400;">Fortaleced vuestro
+                                espíritu con ginebras botánicas nacidas en alambiques de cobre, rones oscuros que han
+                                desafiado los mares caribeños y tequilas sagrados de ágave azul americano.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#grimorio-seccion"
+                                class="btn btn-outline-gold w-100 py-2 text-center d-block">Revisar el Grimorio de
+                                Pociones</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 p-5 custom-card rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fs-1 mb-2">🍷</div>
+                            <h2 class="fw-bold mb-3 text-gold">Caldos de Guarda & Elixires</h2>
+                            <p class="fs-5" style="color: #bfae96 !important; font-weight: 400;">Para aquellos
+                                caballeros de paciencia infinita. Una fina selección de tintos de gran reserva que han
+                                dormido en las catacumbas, caldos blancos y néctares espumosos dignos de un banquete
+                                nupcial.</p>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-outline-gold w-100 py-2" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modalVinos" id="btnCatacumbas">
+                                Descender a las Catacumbas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-5 mt-4 custom-card rounded-3 border" id="grimorio-seccion">
+                <h2 class="text-gold text-center mb-5" style="font-family: 'Cinzel', serif; font-size: 2.2rem;">📜 El
+                    Grimorio de Pociones de Autor</h2>
+                <div class="row text-center">
+
+                    <div class="col-md-4 mb-4 px-3">
+                        <div class="p-4 h-100 rounded pocion-interactive-box" data-receta-nombre="Old Fashioned Real"
+                            data-receta-instrucciones="Infundir 2 oz de Bourbon Premium, 3 gotas de amargo de Angostura, 1 terrón de azúcar moreno. Remover en vaso de piedra con hielo macizo e hidratar con los aceites de una fina piel de naranja recién cortada.">
+                            <div class="mb-2"><span class="cartel-medieval">📜 PÚLSAME Y CONOCERÁS LA ALQUIMIA</span>
+                            </div>
+                            <h4 class="text-gold mb-3" style="font-size: 1.3rem;">Old Fashioned Real</h4>
+                            <p
+                                style="color: #dfd5c0 !important; font-size: 1.1rem; font-style: italic; font-weight: 400; line-height: 1.6;">
+                                Bourbon, amargo de Angostura, azúcar e hidratado con piel de naranja fina.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4 px-3">
+                        <div class="p-4 h-100 rounded pocion-interactive-box" data-receta-nombre="Cáliz de Escocia"
+                            data-receta-instrucciones="Mezclar en un cáliz frío 1.5 oz de Scotch ahumado y 1 oz de licor Drambuie. Añadir hielo puro de glaciar, remover en el sentido de las agujas del reloj y perfumar con corteza de limón imperial.">
+                            <div class="mb-2"><span class="cartel-medieval">📜 PÚLSAME Y CONOCERÁS LA ALQUIMIA</span>
+                            </div>
+                            <h4 class="text-gold mb-3" style="font-size: 1.3rem;">Cáliz de Escocia</h4>
+                            <p
+                                style="color: #dfd5c0 !important; font-size: 1.1rem; font-style: italic; font-weight: 400; line-height: 1.6;">
+                                Whisky ahumado, licor de drambuie y un toque de hielo de los glaciares.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4 px-3">
+                        <div class="p-4 h-100 rounded pocion-interactive-box" data-receta-nombre="Poción de la Abadía"
+                            data-receta-instrucciones="En una copa de balón ancha, verter 2 oz de ginebra destilada artesanal, incorporar 3 bayas de enebro machacadas y rellenar suavemente con agua tónica premium fría. Decorar con hojas de menta del huerto.">
+                            <div class="mb-2"><span class="cartel-medieval">📜 PÚLSAME Y CONOCERÁS LA ALQUIMIA</span>
+                            </div>
+                            <h4 class="text-gold mb-3" style="font-size: 1.3rem;">Poción de la Abadía</h4>
+                            <p
+                                style="color: #dfd5c0 !important; font-size: 1.1rem; font-style: italic; font-weight: 400; line-height: 1.6;">
+                                Ginebra botánica, tónica infusionada y bayas silvestres del huerto real.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="pt-4 mt-5 text-center text-secondary border-top border-dark fs-7"
+                style="font-family: 'Cinzel', serif;">
+                <p class="mb-1">&copy; Año del Señor de 2026 · La Cofradía del Destilado. Bajo decreto real.</p>
+            </footer>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modalWhisky" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-medieval">
+                <div class="modal-header modal-header-medieval">
+                    <h5 class="modal-title modal-gold-title">📜 Edicto de la Alta Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3" style="font-weight: 600;">Nuestros monjes han custodiado estos barriles durante
+                        décadas. He aquí el tributo por botella:</p>
+                    <table class="table table-hover table-medieval table-borderless mb-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Brebaje</th>
+                                <th scope="col">Añadas</th>
+                                <th scope="col">Monedas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Single Malt Islay (Ahumado)</td>
+                                <td>18 Inviernos</td>
+                                <td>120 piezas</td>
+                            </tr>
+                            <tr>
+                                <td>Highland Néctar (Suave)</td>
+                                <td>25 Inviernos</td>
+                                <td>250 piezas</td>
+                            </tr>
+                            <tr>
+                                <td>Bourbon Sagrado de Roble</td>
+                                <td>12 Inviernos</td>
+                                <td>85 piezas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="mb-2">
+                        <label for="selectorWhisky" class="form-label fw-bold mb-2"
+                            style="font-family: 'Cinzel', serif; font-size: 0.95rem; color: #4a3114;">
+                            ✍️ Señalad vuestro elíxir en el pergamino:
+                        </label>
+                        <select class="form-select select-medieval" id="selectorWhisky">
+                            <option value="Single Malt Islay (18 Inviernos)">Single Malt Islay — 120 monedas</option>
+                            <option value="Highland Néctar (25 Inviernos)">Highland Néctar — 250 monedas</option>
+                            <option value="Bourbon Sagrado de Roble (12 Inviernos)">Bourbon Sagrado de Roble — 85
+                                monedas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-medieval">
+                    <button type="button" class="btn btn-secondary text-dark" data-bs-dismiss="modal"
+                        style="background-color: #bfae96; border: 1px solid #5a3e1a; font-weight: bold;">Guardar
+                        Pergamino</button>
+                    <button type="button" class="btn btn-gold text-white" id="btnReclamarBotella"
+                        style="background-color: #4a3114 !important; border-color: #2b1d0c !important;">Estampar Sello
+                        Real</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalVinos" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-medieval">
+                <div class="modal-header modal-header-medieval">
+                    <h5 class="modal-title modal-gold-title">🍇 Crónicas de las Catacumbas</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center py-4" id="contenidoCatacumbas">
+                </div>
+                <div class="modal-footer modal-footer-medieval">
+                    <button type="button" class="btn btn-secondary text-dark" data-bs-dismiss="modal"
+                        style="background-color: #bfae96; border: 1px solid #5a3e1a; font-weight: bold;">Subir a la
+                        Superficie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalGrimorio" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-medieval">
+                <div class="modal-header modal-header-medieval">
+                    <h5 class="modal-title modal-gold-title">📜 Fórmula del Maestro Alquimista</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <h3 class="mb-3" id="grimorioPocionNombre" style="color: #4a3114; font-weight: bold;"></h3>
+                    <p class="fs-5 lh-base px-2" style="font-style: italic; color: #2b1d0c; font-weight: 500;"
+                        id="grimorioPocionInstrucciones"></p>
+                </div>
+                <div class="modal-footer modal-footer-medieval justify-content-center">
+                    <button type="button" class="btn btn-gold text-white" data-bs-dismiss="modal"
+                        style="background-color: #4a3114 !important; border-color: #2b1d0c !important;">Memorizar
+                        Hechizo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalNotificacion" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content modal-content-medieval text-center py-3">
+                <div class="modal-body">
+                    <div class="fs-1 mb-2">🦅</div>
+                    <h4 class="mb-2" style="color: #4a3114; font-weight: bold;">¡Cuervo Enviado!</h4>
+                    <p class="small fw-bold" id="textoNotificacion" style="color: #2b1d0c;"></p>
+                    <button type="button" class="btn btn-gold btn-sm mt-3 px-3 text-white" data-bs-dismiss="modal"
+                        style="background-color: #4a3114 !important;">Que así sea</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // --- ⚙️ 1. GRIMORIO INTERACTIVO ---
+            const bootstrapGrimorioModal = new bootstrap.Modal(document.getElementById('modalGrimorio'));
+            const grimorioNombre = document.getElementById('grimorioPocionNombre');
+            const grimorioInstrucciones = document.getElementById('grimorioPocionInstrucciones');
+
+            document.querySelectorAll('.pocion-interactive-box').forEach(box => {
+                box.addEventListener('click', () => {
+                    grimorioNombre.textContent = box.getAttribute('data-receta-nombre').toUpperCase();
+                    grimorioInstrucciones.textContent = box.getAttribute('data-receta-instrucciones');
+                    bootstrapGrimorioModal.show();
+                });
+            });
+
+            // --- ⚙️ 2. PEDIDOS RESERVA REAL ---
+            const bootstrapNotifModal = new bootstrap.Modal(document.getElementById('modalNotificacion'));
+            const btnReclamar = document.getElementById('btnReclamarBotella');
+
+            if (btnReclamar) {
+                btnReclamar.addEventListener('click', () => {
+                    const seleccion = document.getElementById('selectorWhisky').value;
+                    bootstrap.Modal.getInstance(document.getElementById('modalWhisky')).hide();
+
+                    setTimeout(() => {
+                        document.getElementById('textoNotificacion').innerHTML = `El mensaje ha sido lacrado en cera. Un lacayo real marchará hacia vuestro feudo portando:<br><br><strong>"${seleccion}"</strong>.`;
+                        bootstrapNotifModal.show();
+                    }, 400);
+                });
+            }
+
+            // --- ⚙️ 3. CATACUMBAS INTERACTIVAS CON FILTROS DE DISEÑO ---
+            const contenedorCatacumbas = document.getElementById('contenidoCatacumbas');
+            const btnCatacumbas = document.getElementById('btnCatacumbas');
+
+            // Imagen de Netanyahu con filtro de óleo y marco doble integrado por CSS
+            const plantillaCatacumbasOriginal = `
+            <div class="text-center">
+                <img src="https://i.postimg.cc/SN0Wzxss/netanyahus.png" alt="Decreto Real" class="imagen-modal-medieval">
+            </div>
+            <p class="fs-5 italic mt-2 fw-bold" style="color: #4a3114;">"El buen caldo aguarda en las sombras donde el Sol no osa castigar la fruta."</p>
+            <p class="small px-2" style="color: #2b1d0c; font-weight: 500;">Habéis descendido a los fríos sótanos de piedra de la Cofradía. Las barricas de la reserva real descansan estrictamente protegidas bajo la ley del reino.</p>
+            <div class="p-3 rounded mt-3" style="background: rgba(90, 62, 26, 0.1); border: 1px solid #5a3e1a;">
+                <p class="small mb-3 fw-bold" style="font-family: 'Cinzel', serif; color: #5a3e1a;">⚠️ Se requiere el salvoconducto explícito del soberano para catas privadas.</p>
+                <button type="button" class="btn text-white btn-sm px-4" id="btnEnviarPeticion" style="background-color: #5a3e1a; font-family: 'Cinzel', serif;">
+                    Solicitar beneplácito al Señor Feudal
+                </button>
+            </div>
+        `;
+
+            if (btnCatacumbas) {
+                btnCatacumbas.addEventListener('click', () => {
+                    contenedorCatacumbas.innerHTML = plantillaCatacumbasOriginal;
+                    asignarEventoPeticion();
+                });
+            }
+
+            // Imagen de Donald Trump con filtro de óleo al mutar el estado
+            function asignarEventoPeticion() {
+                const btnEnviar = document.getElementById('btnEnviarPeticion');
+                if (btnEnviar) {
+                    btnEnviar.addEventListener('click', () => {
+                        contenedorCatacumbas.innerHTML = `
+                        <div class="py-2 text-center">
+                            <img src="https://i.postimg.cc/FzvHN8rd/donaldius.png" alt="Señor Feudal" class="imagen-modal-medieval">
+                            <h3 class="mt-2 mb-1" style="color: #4a3114; font-weight: bold;">¡Petición Lacrada!</h3>
+                            <p class="fs-5 px-3" style="font-style: italic; color: #2b1d0c; font-weight: 600; line-height: 1.5;">
+                                «Vuestro ruego ha sido enviado. El monarca evalúa vuestro linaje y lealtad desde la torre del homenaje. Aguardad en silencio su real edicto antes de catar las barricas sagradas.»
+                            </p>
+                        </div>
+                    `;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
