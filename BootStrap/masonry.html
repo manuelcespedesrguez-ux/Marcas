@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,9 +15,9 @@
             --text-muted: #94a3b8;
         }
 
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-image: radial-gradient(circle at 50% -20%, #1e1b4b, #080808);
             background-attachment: fixed;
@@ -28,8 +29,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 1.5rem;
             padding: 1.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem; /* Separa las tarjetas verticalmente */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición más fluida */
         }
 
         .card:hover {
@@ -58,7 +59,10 @@
             color: white !important;
         }
 
-        h1, h5 { letter-spacing: -0.025em; }
+        h1,
+        h5 {
+            letter-spacing: -0.025em;
+        }
 
         /* Estilo para los links */
         .btn-light {
@@ -66,10 +70,14 @@
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .btn-light:hover { background: rgba(255, 255, 255, 0.1); color: var(--accent); }
+
+        .btn-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+        }
     </style>
 </head>
+
 <body>
 
     <main class="container py-5">
@@ -78,79 +86,119 @@
             <p class="text-secondary">Gestión de sistema en tiempo real</p>
         </header>
 
-        <div class="row g-4" data-masonry='{"percentPosition": true }'>
-            
-            <div class="col-12 col-md-4">
-                <div class="card gradient-border">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/14-6-2025_XXI_Edici%C3%B3n_de_los_Premios_Hazte_O%C3%ADr_-_Vito_Quiles_%28cropped%29.jpg" 
-                    class="rounded-circle mb-3" width="70" alt="Avatar">
-                    <h5>Vector Kills</h5>
-                    <p class="text-primary small">FullLies Designer</p>
-                    <p class="small text-muted">Experto en BackLie y FrontLie, diseñada apps gracias a las pagas de sus clientes, no esta financiado por ningún PP (abreviatura de partido político).</p>
-                </div>
-            </div>
+        <div class="row g-2" data-masonry='{"percentPosition": true }'>
 
             <div class="col-12 col-md-4">
-                <div class="card">
-                    <h5>Tráfico de Red</h5>
-                    <h2 class="text-white">1.2 Gbps</h2>
-                    <div class="progress bg-dark" style="height: 6px;"><div class="progress-bar bg-primary" style="width: 70%"></div></div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-sm p-4">
-                    <h5 class="mb-3 text-secondary">Cálculo Rápido</h5>
-                    <div class="input-group mb-2">
-                        <input type="number" class="form-control" id="calc1" placeholder="0">
-                        <input type="number" class="form-control" id="calc2" placeholder="0">
-                    </div>
-                    <div class="d-grid mb-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="calcular()">Calcular</button>
-                    </div>
-                    <div class="text-center fw-bold text-primary mt-2" id="resultadoCalculadora">
-                        Resultado: -
+                <div class="card mb-2">
+                    <div class="card gradient-border">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/14-6-2025_XXI_Edici%C3%B3n_de_los_Premios_Hazte_O%C3%ADr_-_Vito_Quiles_%28cropped%29.jpg"
+                            class="rounded-circle mb-3 img-fluid"
+                            style="width: 120px; height: 120px; object-fit: cover;" alt="Avatar">
+                        <h5>Vector Kills</h5>
+                        <p class="text-primary small">FullLies Designer</p>
+                        <p class="small text-muted">Experto en BackLie y FrontLie, diseñada apps gracias a las pagas de
+                            sus clientes, no esta financiado por ningún PP (abreviatura de partido político).</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-4">
-                <div class="card">
-                    <h5>Próximos eventos</h5>
-                    <li><strong>24 May:</strong> Recuperación de asignatura universidad, asi ya podré ser un designer profesional</li>
-                    <li><strong>26 May:</strong> Comida con Bego Gómez (Mujer de Peter Smith)</li>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card">
-                    <h5>Estado del Sistema</h5>
-                    <span class="badge bg-success bg-opacity-20 text-success">ONLINE</span>
-                    <p class="mt-2 text-secondary small">Servidores operando al 99.9% de capacidad sin latencia reportada.</p>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card bg-dark text-white">
-                    <h5>Último Log</h5>
-                    <code class="text-info small">2026-05-23 16:10:00 [INFO] System Heartbeat</code>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-sm p-4">
-                    <h5 class="mb-3 text-secondary">Documentación</h5>
-                    <div class="d-grid gap-2">
-                        <a href="https://aprendetu.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-light text-start">📄 Guía de estilo CSS</a>
-                        <a href="https://github.com/manuelcespedesrguez-ux/Marcas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-light text-start">🔗 Repositorio GitHub</a>
+                <div class="card mb-2">
+                    <div class="card">
+                        <h5>Tráfico de Red</h5>
+                        <h2 class="text-white">1.2 Gbps</h2>
+                        <div class="progress bg-dark" style="height: 6px;">
+                            <div class="progress-bar bg-primary" style="width: 70%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-sm p-4 text-center">
-                    <h5 class="mb-3">¿Buscas la verdad?</h5>
-                    <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#bromaModal">
-                        Click aquí para ver tus fuentes
-                    </button>
+
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card shadow-sm p-4">
+                        <h5 class="mb-3 text-secondary">Cálculo Rápido</h5>
+                        <div class="input-group mb-2">
+                            <input type="number" class="form-control" id="calc1" placeholder="0">
+                            <input type="number" class="form-control" id="calc2" placeholder="0">
+                        </div>
+                        <div class="d-grid mb-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm"
+                                onclick="calcular()">Calcular</button>
+                        </div>
+                        <div class="text-center fw-bold text-primary mt-2" id="resultadoCalculadora">
+                            Resultado: -
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card">
+                        <h5>Próximos eventos</h5>
+                        <li><strong>24 May:</strong> Recuperación de asignatura universidad, asi ya podré ser un
+                            designer profesional</li>
+                        <li><strong>26 May:</strong> Comida con Bego Gómez (Mujer de Peter Smith)</li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card">
+                        <h5>Estado del Sistema</h5>
+                        <span class="badge bg-success bg-opacity-20 text-success">ONLINE</span>
+                        <p class="mt-2 text-secondary small">Servidores operando al 99.9% de capacidad sin latencia
+                            reportada.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card bg-dark text-white">
+                        <h5>Último Log</h5>
+                        <code class="text-info small">2026-05-23 16:10:00 [INFO] System Heartbeat</code>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card shadow-sm p-4">
+                        <h5 class="mb-3 text-secondary">Documentación</h5>
+                        <div class="d-grid gap-2">
+                            <a href="https://aprendetu.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-sm btn-light text-start">📄 Guía de estilo CSS</a>
+                            <a href="https://github.com/manuelcespedesrguez-ux/Marcas" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-sm btn-light text-start">🔗 Repositorio
+                                GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <div class="card shadow-sm p-4 text-center">
+                        <h5 class="mb-3">¿Buscas la verdad?</h5>
+                        <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal"
+                            data-bs-target="#bromaModal">
+                            Click aquí para ver tus fuentes
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <h5>Rendimiento</h5>
+                    <p class="small text-muted">CPU: 12%</p>
+                    <div class="progress mb-3" style="height: 5px;">
+                        <div class="progress-bar" style="width: 12%"></div>
+                    </div>
+                    <p class="small text-muted">RAM: 45%</p>
+                    <div class="progress" style="height: 5px;">
+                        <div class="progress-bar" style="width: 45%"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,10 +211,10 @@
             // Obtenemos los valores de los inputs
             const val1 = Number(document.getElementById('calc1').value);
             const val2 = Number(document.getElementById('calc2').value);
-            
+
             // Hacemos la suma
             const resultado = val1 + val2;
-            
+
             // Escribimos en el div de resultado
             const divResultado = document.getElementById('resultadoCalculadora');
             if (divResultado) {
@@ -185,7 +233,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="https://maldita.es/uploads/public/Foto%20gorila%20broma.jpg" class="img-fluid rounded" alt="Gorila vacilando">
+                    <img src="https://maldita.es/uploads/public/Foto%20gorila%20broma.jpg" class="img-fluid rounded"
+                        alt="Gorila vacilando">
                     <p class="mt-3 text-muted">¿Te esperabas otra cosa? Sigue informándote así.</p>
                 </div>
             </div>
@@ -193,4 +242,5 @@
     </div>
 
 </body>
+
 </html>
