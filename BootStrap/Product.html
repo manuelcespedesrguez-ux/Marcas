@@ -1,98 +1,386 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="light">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HydraPure | The Future of Hydration</title>
+    <title>HydraPure | El futuro de tu ruina financiera</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        :root { --brand-blue: #2563eb; --brand-dark: #0f172a; --brand-accent: #f59e0b; }
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .fade-in { animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hero-section { background: var(--brand-dark); color: white; padding: 120px 0; position: relative; }
-        .btn-premium { background-color: var(--brand-accent); border-radius: 50px; font-weight: 800; text-transform: uppercase; border: none; transition: 0.3s; padding: 15px 40px; }
-        .btn-premium:hover { background-color: #fbbf24; transform: translateY(-3px); }
-        .stat-card { border: 1px solid #e2e8f0; border-radius: 16px; padding: 25px; transition: 0.3s; background: white; }
-        .stat-card:hover { border-color: var(--brand-blue); transform: translateY(-10px); }
-        .price-tag { font-size: 2.5rem; font-weight: 800; color: var(--brand-blue); }
-        .testimonio { font-size: 1.2rem; font-style: italic; color: #334155; }
-        .hero-img { width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        #scrollTop { position: fixed; bottom: 20px; right: 20px; display: none; z-index: 1000; border-radius: 50%; }
+        :root {
+            --brand-dark: #0f172a; 
+            --brand-accent: #f59e0b; 
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: white; 
+            color: black;
+            overflow: auto !important; /* CORRECCIÓN: Fuerza a que la barra lateral aparezca */
+        }
+        .stat-banner { 
+            background: var(--brand-dark); 
+            color: var(--brand-accent); 
+            padding: 10px; font-weight: bold; 
+            text-align: center; 
+        }
+
+        .hero-section { 
+            color: white; 
+            padding: 100px 0; /* Más relleno para que se vea la imagen */
+            position: relative; /* Para la superposición de la imagen */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--brand-dark); /* Fondo por defecto */
+            opacity: 1;
+            transition: opacity 2s; /* Transición para cuando cargue la imagen */
+        }
+
+        .hero-content {
+            z-index: 10;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Asegura que el texto sea legible */
+        }
+        
+        .card-producto { 
+            transition: 0.3s; 
+        }
+        .card-producto:hover {
+            transform: scale(1.05); 
+            border: 2px solid var(--brand-accent); 
+        }
+        
+        /* Botón huidizo */
+        .btn-huir { 
+            transition: 0.02s; 
+            position: relative; 
+        }
+
+        .card-img-top {
+            height: 200px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Corta la imagen para que rellene el espacio sin estirarse */
+            width: 100%;
+        }
+
+        /* Elimina cualquier 'position: absolute' o 'fixed' de tu footer en el CSS */
+        footer {
+            position: relative; /* Esto lo obliga a quedarse debajo de todo */
+            width: 100%;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #0f172a;
+            color: #f59e0b;
+            text-align: center;
+            clear: both; /* Esto asegura que nada flote encima */
+        }
+
+        #cart-count {
+            color: #ffffff !important; /* Fuerza el color blanco */
+            background-color: #f59e0b; /* Un fondo naranja para que resalte más */
+            padding: 2px 6px;
+            border-radius: 50%; /* Lo convierte en un circulito tipo notificación */
+            font-weight: bold;
+        }
     </style>
 </head>
+<body>
 
-<body data-bs-spy="scroll" data-bs-target="#navbar">
+    <div class="stat-banner">
+        <div>DINERO GANADO: <span id="contador">$50.000.000</span></div>
+        <div class="mt-2">TU SALDO: <span id="saldo" style="color: green;">$100</span></div>
+    </div>
 
-    <nav id="navbar" class="navbar navbar-expand-md bg-white border-bottom sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bolder" href="#"><i class="bi bi-droplet-fill text-primary"></i> HYDRAPURE</a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="#precios">Precios</a>
-                <a class="nav-link" href="#testimonios">Reseñas</a>
-                <button class="btn btn-outline-dark rounded-pill ms-3">Acceso Privado</button>
-            </div>
-        </div>
-    </nav>
+    <div class="cart-icon" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        🛒 <span id="cart-count">0</span>
+    </div>
 
-    <main class="fade-in">
-        <section class="hero-section text-center text-lg-start">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <span class="badge bg-primary mb-3">LIDERANDO EL MERCADO DE HUMO</span>
-                        <h1 class="display-1 fw-bolder text-white mb-4">La pureza no es barata.</h1>
-                        <p class="lead text-secondary mb-5">Ingeniería aplicada al agua de tu grifo.</p>
-                        <button class="btn btn-premium" onclick="abrirModalPromocion()">Solicitar Exclusividad</button>
-                    </div>
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <img src="https://www.portland.gov/sites/default/files/styles/twitter/public/2020/brown-water.jpg?itok=vpFyz_i1" class="hero-img" alt="HydraPure">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container my-5 p-5 bg-primary text-white rounded-5 text-center">
-            <h3>¿Quieres más decepciones?</h3>
-            <p>Suscríbete para recibir facturas sorpresa.</p>
-            <input type="email" id="emailInput" class="form-control w-50 mx-auto" placeholder="tu.dinero@esnuestro.com">
-            <button class="btn btn-warning mt-3" onclick="enviarNewsletter()">Enviar dinero</button>
-        </section>
-
-        </main>
-
-    <div id="promoModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center p-4">
-                <h4>¡ESPERA! 🛑</h4>
-                <p>¿Te vas ya? ¡Compra ahora y te regalamos una botella vacía gratis!</p>
-                <button class="btn btn-warning" data-bs-dismiss="modal">Comprar ahora</button>
+    <div class="modal fade" id="carritoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><h5>Tu Carrito</h5></div>
+                <div class="modal-body" id="cart-items"></div>
+                <div class="modal-footer"><button class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button></div>
             </div>
         </div>
     </div>
 
-    <button id="scrollTop" class="btn btn-primary" onclick="window.scrollTo(0,0)"><i class="bi bi-arrow-up"></i></button>
+    <section class="hero-section text-center">
+        <div class="hero-bg" id="heroBg"></div> <div class="container hero-content">
+            <h1 class="display-1 fw-bolder">La pureza no es barata.</h1>
+            <p class="lead">Ingeniería aplicada al agua de tu grifo.</p>
+            <button class="btn btn-warning btn-lg" onclick="mostrarVideo('oi5kiAIjJsw'); agregarAlCarrito('beber agua correctamente')">Beber Agua ($50)</button>
+        </div>
+    </section>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-5">Nuestras Aguas Exclusivas</h2>
+        <div class="row g-4">
+            <div class="col-md-4 card-producto p-3 border rounded">
+                <img src="https://plus.unsplash.com/premium_photo-1700568880515-8532b5498fd6?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top"alt="Charca">
+                <h4>Agua de Charco Premium</h4>
+                <p>Filtrada con un calcetín usado.</p>
+                <button class="btn btn-primary" onclick="crecerContador(200, 'HQynM5tQ1Eg'); agregarAlCarrito('Agua de Charco Premium correctamente');">Comprar ($200)</button>
+            </div>
+            <div class="col-md-4 card-producto p-3 border rounded">
+                <img src="https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/lago-seco-sequia-pixabay.jpg?itok=AtnkoRCE" class="card-img-top" alt="Seca">
+                <h4>Agua Seca</h4>
+                <p>Es literalmente polvo, pero dice agua.</p>
+                <button class="btn btn-primary" onclick="crecerContador(200, '5NyIfojqj-8'); agregarAlCarrito('Agua Seca correctamente');">Comprar ($500)</button>
+            </div>
+            <div class="col-md-4 card-producto p-3 border rounded">
+                <img src="https://oftalmocentrosanjavier.com.ar/wp-content/uploads/2020/04/20151126_MVBLOG_lagrimas-pic00.jpg" class="card-img-top" alt="Lagrima">
+                <h4>Agua de Lágrimas</h4>
+                <p>Recolectada de nuestros clientes al ver la factura.</p>
+                <button class="btn btn-primary" onclick="crecerContador(200, 'dAnNerkFf44'); agregarAlCarrito('Agua de Lágrimas correctamente');">Comprar ($1000)</button>
+            </div>
+        </div>
+        
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert">
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+        </div>
+    </section>
+
+    <footer class="text-center mt-5 p-4 border-top" style="background-color: #0f172a; color: #f59e0b;">
+        <p>© 2026 HydraPure Corp. - "Tu dinero, nuestro yate".</p>
+        <p>
+            <a href="#" class="text-white" onclick="alert('Demasiado tarde, ya lo hemos gastado.')">Política de privacidad</a> | 
+            <a href="#" class="text-white" onclick="alert('No hay devoluciones, solo más cargos.')">Términos y condiciones</a>
+        </p>
+        <p><small>Advertencia: Este sitio es una estafa. Si sigues haciendo clic, tu saldo llegará a números que no sabías que existían.</small></p>
+    </footer>
+
+    <div id="promoModal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4 text-center">
+                <h4>¡SIGUES AQUÍ! 🛑</h4>
+                <p>Tu deuda crece cada 5 segundos y nosotros nos lucramos a tu costa.</p>
+                <h2 id="timer" class="text-danger">10</h2>
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-4" style="height: 120px;">
+                    <button class="btn btn-danger btn-huir" onmouseover="huir(this)">Sí, Dame mi dinero</button>
+                    <button class="btn btn-success" data-bs-dismiss="modal" onclick="resetTimer()">¡Me quedo!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="videoModalLabel">¡Tu compra premium!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9" id="video-wrapper">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function abrirModalPromocion() {
-            new bootstrap.Modal(document.getElementById('promoModal')).show();
-        }
-
-        document.querySelector('.btn-outline-dark').addEventListener('click', function() {
-            alert("Acceso denegado: Solo para clientes que han pagado la suscripción 'Ultra'.");
-        });
-
-        function enviarNewsletter() {
-            const email = document.getElementById('emailInput').value;
-            if(email !== "") {
-                alert("¡Gracias, " + email + "! Pronto te llegará tu factura sorpresa.");
-            } else {
-                alert("Introduce un correo para que podamos cobrarte.");
+        
+        // --- FUNCIÓN DE CABECERA (Añadir esta parte) ---
+        async function cargarCabecera() {
+            // Esta función "genera" la imagen y luego la aplica
+            try {
+                // Simulación de carga de la herramienta (ya que no la llamamos directamente)
+                // video_generation.generate_video_from_inputs(prompt="Una vista cinematográfica de un desierto con una gota de agua futurista", image_size="landscape")
+                
+                // Aplicamos la imagen de cabecera generada
+                const heroBg = document.getElementById('heroBg');
+                heroBg.style.backgroundImage = "url('https://i.postimg.cc/pTjwg7G3/Gemini-Generated-Image-hrigfjhrigfjhrig.png')"; // Enlace a la imagen generada
+                heroBg.style.backgroundSize = "cover";
+                heroBg.style.backgroundPosition = "center";
+                heroBg.style.opacity = "1"; /* Mostramos la imagen */
+            } catch (error) {
+                console.error("No se pudo cargar la imagen de cabecera.", error);
             }
         }
+        
+        // Llamar a la función al cargar la página
+        window.addEventListener('load', cargarCabecera);
+
+        // --- CORRECCIÓN DE LA BARRA LATERAL EN EL RESET (Añadir esta parte) ---
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 5;
+            document.getElementById('timer').innerText = timeLeft;
+            
+            // CORRECCIÓN: Asegura que la barra lateral no desaparezca
+            document.body.style.overflow = 'auto'; 
+            
+            // Limpieza manual del backdrop si Bootstrap falla
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(b => b.remove());
+        }
+
+        let dineroExtraido = 50000000;
+        let saldoUsuario = 100;
+        let timeLeft = 5;
+        let timerInterval;
+
+        function actualizarUI() {
+            document.getElementById('contador').innerText = '$' + dineroExtraido.toLocaleString();
+            let saldoElement = document.getElementById('saldo');
+            saldoElement.innerText = '$' + saldoUsuario.toLocaleString();
+            saldoElement.style.color = saldoUsuario < 0 ? 'red' : 'green';
+        }
+
+        let carrito = [];
+
+        function agregarAlCarrito(nombreProducto) {
+            // 1. Añadimos al array
+            carrito.push(nombreProducto);
+            
+            // 2. Actualizamos el contador visual
+            document.getElementById('cart-count').innerText = carrito.length;
+            
+            // 3. Lanzamos el mensaje (puedes usar un simple alert o un toast de Bootstrap)
+            const toastLive = document.getElementById('liveToast');
+            document.getElementById('toast-message').innerText = "Se ha añadido " + nombreProducto;
+            const toast = new bootstrap.Toast(toastLive);
+            toast.show();
+            
+            // Opcional: imprimir en consola para depurar
+            console.log("Carrito actual: ", carrito);
+        }
+
+        // Recibe el 'id' como parámetro
+        function mostrarVideo(videoId) {
+            const wrapper = document.getElementById('video-wrapper');
+            
+            // Inyectamos el iframe en la caja del modal
+            wrapper.innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                        allowfullscreen 
+                        allow="autoplay">
+                </iframe>
+            `;
+
+            // Inicializamos y mostramos el modal de Bootstrap
+            const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+            videoModal.show();
+
+            // Limpiamos el contenido al cerrar el modal (para que el video se detenga)
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', () => {
+                wrapper.innerHTML = '';
+            });
+        }
+
+        // Actualiza esta función en tu script
+        // Variable global para controlar la escala del botón
+        let scaleFactor = 1.0; 
+
+        function crecerContador(cantidad, videoId, btn) {
+            const precio = cantidad || 50; 
+            
+            dineroExtraido += precio;
+            saldoUsuario -= precio;
+            actualizarUI();
+            
+            // Si pasaste el botón (btn), lo encogemos
+            if (btn) {
+                scaleFactor -= 0.1; // Reduce 10%
+                if (scaleFactor < 0.3) scaleFactor = 0.3; // Límite para que no desaparezca
+                btn.style.transform = `scale(${scaleFactor})`;
+                btn.style.transition = "0.2s"; // Animación suave
+            }
+            
+            mostrarVideo(videoId); 
+        }
+
+        function huir(btn) {
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 100 - 50;
+            // Solo movemos y escalamos, no tocamos btn.style.backgroundColor
+            btn.style.transform = `translate(${x}px, ${y}px) scale(0.9)`; 
+        }
+
+        function resetTimer() {
+            // 1. Detener el conteo
+            clearInterval(timerInterval);
+            timerInterval = null; // Muy importante para que pueda volver a iniciar si sales otra vez
+            
+            // 2. Resetear el tiempo
+            timeLeft = 5;
+            document.getElementById('timer').innerText = timeLeft;
+
+            // 3. FUERZA el cierre del modal y limpieza del fondo
+            const modalElement = document.getElementById('promoModal');
+            const modalInstance = bootstrap.Modal.getInstance(modalElement);
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+            
+            // Eliminar el fondo oscuro manualmente si se queda pegado
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(b => b.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+        }
+
+        // --- LOCURA DE BOTONES CADA 5 SEGUNDOS ---
+        setInterval(() => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.style.transform = `scale(${0.9 + Math.random() * 0.2})`;
+            });
+        }, 5000);
+
+        // --- MODAL DE CASTIGO ---
+        document.addEventListener('mouseleave', () => {
+            const modalElement = document.getElementById('promoModal');
+            // Esto asegura que si el modal ya existe, lo vuelva a mostrar
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+            
+            // Solo iniciamos el timer si no estaba corriendo ya
+            if (!timerInterval) {
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    document.getElementById('timer').innerText = timeLeft;
+                    if (timeLeft <= 0) {
+                        let multa = 50;
+                        dineroExtraido += multa;
+                        saldoUsuario -= multa;
+                        actualizarUI();
+                        timeLeft = 5;
+                    }
+                }, 1000);
+            }
+        });
+
+        // --- FOOTER INTERACTIVO ---
+        document.querySelector('footer').addEventListener('mouseover', function() {
+            // 1. Calculamos movimiento aleatorio
+            const randomX = Math.random() * 20 - 10;
+            const randomY = Math.random() * 20 - 10;
+            
+            // 2. Controlamos que el footer se haga más pequeño y no vuelva a crecer
+            if (typeof scaleFactorFooter === 'undefined') scaleFactorFooter = 1.0;
+            scaleFactorFooter -= 0.05;
+            if (scaleFactorFooter < 0.2) scaleFactorFooter = 0.2; // Límite para que no desaparezca
+            
+            // 3. Aplicamos los cambios
+            this.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scaleFactorFooter})`;
+            this.style.transition = "0.3s";
+        });
+
+        document.querySelector('footer').addEventListener('mouseover', function() {
+            this.style.bottom = Math.random() * 50 + 'px';
+            this.style.right = Math.random() * 50 + 'px';
+        });
+
+        
     </script>
 </body>
 </html>
